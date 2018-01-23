@@ -1,0 +1,200 @@
+$colorHtml: #eeeeee;
+
+.highlight {
+  margin-left: 1rem;
+  padding: 0.1rem 0.1rem 0.1rem 0.5rem;
+}
+
+img {
+  max-width: 100%;
+  margin-left: 1rem;
+}
+
+
+html {
+  font-size: 20px;
+  height: 100%;
+  background-color: $colorHtml;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  flex: 0 0 auto;
+}
+.page__title,
+.post__title {
+  margin: 1.5rem 0;
+  font-size: 2rem;
+  text-align: center;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+
+  line-height: 3rem;
+}
+h2 {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  text-decoration: underline;
+  margin: 0.5rem 0;
+  font-size: 1.6;
+}
+
+h3 {
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-size: 1.3rem;
+
+  font-weight: lighter;
+}
+
+.main {
+  margin: 0 4%;
+
+  p {
+    a {
+      color: #01579b;
+    }
+  }
+}
+
+.ankor {
+  text-align: right;
+  list-style: none;
+
+
+
+}
+.link {
+  font-family: "Georgia";
+  text-decoration: none;
+  color: #01579b;
+}
+.site-footer {
+  margin: 2rem 0 0;
+  background-color: #fff;
+}
+
+.wrap {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.menu__left--wrap {
+  flex: 0 0 28%;
+  order: 2;
+  margin: 2% 0 0 1%;
+  background-color: #fff;
+}
+
+.left__nav {
+  margin: 0 4%;
+
+  & a:first-child {
+    margin-top: -.1rem;
+  }
+}
+
+.menu__left__title {
+  margin: 1.6rem 4%;
+  font-size: 2rem;
+  font-family: "Palatino Linotype";
+  font-weight: lighter;
+  text-decoration: none;
+  line-height: 3rem;
+}
+
+.left__nav__link {
+  display: block;
+  margin: 0.5rem 0;
+  text-decoration: none;
+  font-family: sans-serif;
+  color: #333333;
+  font-family: "Courier New";
+
+  &:hover {
+    color: #000;
+  }
+
+  &:active {
+    text-decoration: underline;
+  }
+}
+
+.content {
+  order: 1;
+  flex: 1 0 68%;
+  margin: 2% 1% 0 0;
+  background-color: #fff;
+}
+
+blockquote {
+  text-align: right;
+  font-family: "Comic Sans MS";
+}
+
+strong {
+  font-weight: bold !important;
+}
+
+footer {
+  flex: 0 0 10%;
+}
+// POST
+
+p {
+
+  font-size: 1.1rem;
+  line-height: 27px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: 500;
+  margin: 0.5rem 0;
+}
+
+.post {
+  border-bottom: 1px dotted #8c8b8b;
+  padding-bottom: 0.4rem;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+
+
+.post__link {
+  text-decoration: none;
+  color: #000;
+}
+
+.post__meta {
+  font-family: "Courier New";
+  color: #757575;
+}
+
+.post__readmore {
+  float: right;
+  padding: 0.3rem;
+  background-color: #eee;
+  font-family: "Courier New";
+  font-size: 20px;
+  text-decoration: none;
+  color: #424242;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  &:active {
+    background-color: #bdbdbd;
+  }
+}

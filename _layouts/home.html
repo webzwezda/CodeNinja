@@ -1,0 +1,13 @@
+---
+layout: default
+---
+{% for post in paginator.posts %}
+<article class="post">
+<h1 class="post__title"><a href="{{post.url}}" class="post__link">{{post.title}}</a></h1>
+
+  <p>{{post.description}}</p>
+  <a href="{{post.url}}" class="post__readmore">Читать</a>
+</article>
+
+{% endfor %}
+{{content}}

@@ -1,0 +1,60 @@
+---
+layout: post
+title:  "Git and github быстрый старт"
+date:   2018-01-20 15:14:22 +1000
+category: Web-Services
+description: "Краткое руководство по использованию контроля версий git and gihub"
+---
+<ul class="ankor">
+  <li><a class="link" href="#podgotovka">Подготовка</a></li>
+  <li><a class="link" href="#gitIgnore">Игнорирование файлов и папок</a></li>
+  <li><a class="link" href="#gitsledi">Слежка за файлом</a></li>
+  <li><a class="link" href="#delSGA">Удаление из staging area</a></li>
+  <li><a class="link" href="#push">Отправка на GitHub</a></li>
+</ul>
+<h3 id="podgotovka">Подготовка</h3>
+<p>Нам понадобится <a href="https://git-scm.com/downloads" class="link">Git download</a> и <a href="https://github.com/webzwezda" class="link">GitHub</a></p>
+<p>Загляним в конфиг, что бы понять что нам нужно настроить после установки.</p>
+{% highlight bash %}
+git config --lis
+git config --global --list //Вывод глобальных настроек
+{% endhighlight %}
+<p>Настроим конфиг</p>
+{% highlight bash %}
+git config --global user.name "daDast" //Задаем имя пользователя
+git config --global user.email "dadast@outlook.com" //Задаем емейл
+{% endhighlight %}
+<p>Поселим гита что бы он начал жить в нашей корневом каталоге проекта</p>
+{% highlight bash %}
+git init //селим гита в домик ^_^
+git status //git расскажит что есть в папке и следит ли он за ними
+{% endhighlight %}
+<h3 id="gitIgnore">Игнорирование файлов и папок</h3>
+<p>Создадим в корне файл .gitignore (без расширения) и перечислим там файлы и папки за которыми гит не должен следить, каждый католог или файл с новой строки</p>
+{% highlight bash %}
+git status //git незаметит файлы и папки указанные в .gitignore
+{% endhighlight %}
+<h3 id="gitsledi">Git следи!</h3>
+<p>Гит запомнит все что ему передали и будет готом подписать эти файлы нашим комментарием</p>
+{% highlight bash %}
+git add . //указываем определенный файл или точку(все файлы)
+git commit -m "firs commit"  // Гит закоминтирует файлы переданные ему командой git add .
+git log //логи коммитов
+git log -2 //покажет последние два коммита
+{% endhighlight %}
+<p>После того как мы изменили файл его нужно добавить и закомитить, есть одна команда которая делает две вещи сразу.</p>
+{% highlight bash %}
+git commit -a -m "two commit" //добавит файлы git add . и сделает коммит
+git log -p // покажет нам изменения между коммитами
+{% endhighlight %}
+<h3 id="delSGA">Удаление из staging area случайно добавленного файла</h3>
+{% highlight bash %}
+git add index.html //Типо случайно добавили файл
+git reset HEAD index.html //Типо случайно удалили из staging area
+{% endhighlight %}
+<h3 id="push">Отправка на GitHub</h3>
+{% highlight bash %}
+git remote add origin https://github.com/webzwezda/CodeNindzya.git //Инициализация
+git remote set-url origin https://github.com/webzwezda/CodeNindzya.git // Изменение репозитория
+git push -u origin master //Отправка в  origin 
+{% endhighlight %}

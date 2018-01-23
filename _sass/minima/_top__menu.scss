@@ -1,0 +1,153 @@
+$colorHtml: #fff;
+.toggle,
+[id^=drop] {
+  display: none;
+}
+
+
+.header {
+  margin: 0;
+  padding: 0;
+  background-color: $colorHtml;
+  word-wrap: break-word !important;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 32px;
+  font-size: 22px;
+
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#logo {
+  display: block;
+  padding: 0 30px;
+  float: left;
+  font-size: 20px;
+  line-height: 60px;
+
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+}
+
+.header__menu {
+  float: right;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  position: relative;
+
+  &__lvl2 {
+    display: none;
+    position: absolute;
+    top: 60px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+
+  }
+
+  &__lvl3 {
+    display: none;
+    position: absolute;
+    top: 60px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  // li > a {
+  //   &:after {
+  //     content: ' +';
+  //   }
+  //
+  //   &:only-child:after {
+  //     content: '';
+  //   }
+  // }
+}
+.liDisplay--none{
+  display: none !important;
+}
+.menu__li {
+  margin: 0;
+  display: inline-block;
+  float: left;
+  background-color: $colorHtml;
+
+
+  &:hover > ul {
+    display: inherit;
+  }
+
+  &--lvl2 {
+    float: none;
+    display: list-item;
+    position: relative;
+    list-style: none;
+    background-color: #f5f5f5;
+    min-width: 160px;
+
+    &:hover > ul {
+      display: inherit;
+    }
+  }
+
+  &--lvl3 {
+    float: none;
+    display: list-item;
+    position: relative;
+    top: -60px;
+    left: 160px;
+    list-style: none;
+    background-color: #eeeeee;
+  }
+}
+
+.header__menu__link {
+  display: block;
+  padding: 14px 20px;
+  color: #000;
+  font-size: 17px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  &--bgc {
+    display: block;
+    padding: 14px 20px;
+    color: #000;
+    font-size: 17px;
+    text-decoration: none;
+    background-color: #eee;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+
+  &--hover {
+    display: block;
+    padding: 14px 20px;
+    color: #000;
+    font-size: 17px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+}

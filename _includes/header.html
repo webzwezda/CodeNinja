@@ -1,0 +1,115 @@
+<header class="site-header">
+  <nav class="header">
+    <div  id="logo"><a href="http://localhost:4000">CodeNinja
+      <svg class="icon" height="32px" width="32px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 460">
+    	<path d="M459.153 109.648L428.87 40.813a10.002 10.002 0 0 0-17.698-1.17C346.26 146.384 256.08 237.407 150.06 303.34l-7.254-7.253c-3.904-3.904-10.237-3.904-14.142 0-3.905 3.905-3.905 10.237 0 14.143l3.765 3.766c-40.095 23.503-82.385 43.556-125.9 59.66a10 10 0 0 0-3.602 16.45l32.126 32.126a10 10 0 0 0 10.542 2.307 810.863 810.863 0 0 0 36.962-14.73c.105-.04.208-.088.312-.134a817.4 817.4 0 0 0 35.416-16.15c.235-.107.468-.218.696-.343a817.625 817.625 0 0 0 33.648-17.335c.14-.07.274-.148.41-.226a812.487 812.487 0 0 0 26.12-14.896l7.33 7.33c1.954 1.952 4.513 2.93 7.072 2.93s5.12-.978 7.07-2.93c3.906-3.905 3.906-10.237 0-14.143l-3.437-3.437a821.012 821.012 0 0 0 137.842-97.063c45.795-39.883 87.188-84.908 123.03-133.826a10 10 0 0 0 1.086-9.936zm-294.59 236.48a789.608 789.608 0 0 1-14.707 8.41l-1.104-1.104c-3.904-3.903-10.236-3.904-14.142 0-2.863 2.863-3.618 7.027-2.284 10.586-5.35 2.81-10.73 5.56-16.143 8.25l-1.354-1.355c-3.906-3.904-10.238-3.904-14.143 0a9.997 9.997 0 0 0-2.483 10.016 795.17 795.17 0 0 1-17.064 7.7l-16.967-16.97a815.408 815.408 0 0 0 82.868-43.055l17.524 17.523zM44.646 403.536l-16.657-16.658a810.513 810.513 0 0 0 16.452-6.666l16.805 16.805a784.042 784.042 0 0 1-16.6 6.52zm137.837-67.774L171.72 325l-7.14-7.14c101.595-63.998 188.785-150.54 253.6-251.68l20.333 46.218c-68.017 91.412-156.326 168.435-256.03 223.364z"/>
+    </svg>
+  </a>
+  </div>
+    <label for="drop" class="toggle" style="text-align: center;">Menu <svg class="icon" height="13px" width="10px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve" >
+  <g>
+  	<polygon points="203.718,322.929 21.179,140.984 0,162.232 203.718,365.287 407.437,162.232 386.258,140.984  " fill="#666b6b"/>
+  	<polygon points="407.437,63.398 386.258,42.15 203.718,224.095 21.179,42.15 0,63.398 203.718,266.453  " fill="#666b6b"/>
+  </svg>
+  </label>
+    <input type="checkbox" id="drop" />
+    <ul class="header__menu">
+        <li class="menu__li">
+            <label for="drop-1" class="toggle">Html & Css <svg class="icon" height="13px" width="10px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve" >
+  <g>
+  	<polygon points="203.718,322.929 21.179,140.984 0,162.232 203.718,365.287 407.437,162.232 386.258,140.984  " fill="#666b6b"/>
+  	<polygon points="407.437,63.398 386.258,42.15 203.718,224.095 21.179,42.15 0,63.398 203.718,266.453  " fill="#666b6b"/>
+  </svg>
+  </label>
+            <a class="header__menu__link" href="{{"/Instructions.html" | prepend: site.url }}">Html & Css <svg class="icon" height="13px" width="10px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve">
+  <g>
+  	<polygon points="203.718,322.929 21.179,140.984 0,162.232 203.718,365.287 407.437,162.232 386.258,140.984  " fill="#666b6b"/>
+  	<polygon points="407.437,63.398 386.258,42.15 203.718,224.095 21.179,42.15 0,63.398 203.718,266.453  " fill="#666b6b"/>
+  </svg>
+  </a>
+            <input type="checkbox" id="drop-1"/>
+            <ul class="header__menu__lvl2">
+              <li class="menu__li--lvl2 liDisplay--none"><a class="header__menu__link " href="{{"/Instructions.html" | prepend: site.url }}">Html&Css</a></li>
+                <li class="menu__li--lvl2"><a class="header__menu__link" href="#">Ссылки</a></li>
+                      <li class="menu__li--lvl2">
+                    <label for="drop-3" class="toggle" style="background-color: #e0e0e0;">Шаблоны <svg class="icon" height="13px" width="10px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve" >
+  <g>
+  	<polygon points="203.718,322.929 21.179,140.984 0,162.232 203.718,365.287 407.437,162.232 386.258,140.984  " fill="#666b6b"/>
+  	<polygon points="407.437,63.398 386.258,42.15 203.718,224.095 21.179,42.15 0,63.398 203.718,266.453  " fill="#666b6b"/>
+  </svg>
+  </label>
+                    <a class="header__menu__link--bgc" href="#">Шаблоны <svg class="icon" height="13px" width="10px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve">
+  <g>
+  	<polygon points="203.718,322.929 21.179,140.984 0,162.232 203.718,365.287 407.437,162.232 386.258,140.984  " fill="#666b6b"/>
+  	<polygon points="407.437,63.398 386.258,42.15 203.718,224.095 21.179,42.15 0,63.398 203.718,266.453  " fill="#666b6b"/>
+  </svg>
+  </a>
+                    <input type="checkbox" id="drop-3"/>
+                    <ul class="header__menu__lvl3">
+                        <li class="menu__li--lvl3"><a class="header__menu__link--hover" href="#">Две колонки</a></li>
+                        <li class="menu__li--lvl3"><a class="header__menu__link--hover" href="#">Три колонки</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="menu__li">
+            <label for="drop-2" class="toggle">Design <svg class="icon" height="13px" width="10px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve" >
+  <g>
+  	<polygon points="203.718,322.929 21.179,140.984 0,162.232 203.718,365.287 407.437,162.232 386.258,140.984  " fill="#666b6b"/>
+  	<polygon points="407.437,63.398 386.258,42.15 203.718,224.095 21.179,42.15 0,63.398 203.718,266.453  " fill="#666b6b"/>
+  </svg>
+  </label>
+            <a class="header__menu__link" href="#">Design <svg class="icon" height="13px" width="10px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve" >
+  <g>
+  	<polygon points="203.718,322.929 21.179,140.984 0,162.232 203.718,365.287 407.437,162.232 386.258,140.984  " fill="#666b6b"/>
+  	<polygon points="407.437,63.398 386.258,42.15 203.718,224.095 21.179,42.15 0,63.398 203.718,266.453  " fill="#666b6b"/>
+  </svg>
+  </a>
+            <input type="checkbox" id="drop-2"/>
+            <ul class="header__menu__lvl2">
+                <li class="menu__li--lvl2"><a class="header__menu__link" href="#">Tutorials</a></li>
+                <li class="menu__li--lvl2">
+              <label for="drop-4" class="toggle" style="background-color: #e0e0e0;">Шаблоны <svg class="icon" height="13px" width="10px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve" >
+<g>
+<polygon points="203.718,322.929 21.179,140.984 0,162.232 203.718,365.287 407.437,162.232 386.258,140.984  " fill="#666b6b"/>
+<polygon points="407.437,63.398 386.258,42.15 203.718,224.095 21.179,42.15 0,63.398 203.718,266.453  " fill="#666b6b"/>
+</svg>
+</label>
+              <a class="header__menu__link--bgc" href="#">Шаблоны <svg class="icon" height="13px" width="10px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve">
+<g>
+<polygon points="203.718,322.929 21.179,140.984 0,162.232 203.718,365.287 407.437,162.232 386.258,140.984  " fill="#666b6b"/>
+<polygon points="407.437,63.398 386.258,42.15 203.718,224.095 21.179,42.15 0,63.398 203.718,266.453  " fill="#666b6b"/>
+</svg>
+</a>
+              <input type="checkbox" id="drop-4"/>
+              <ul class="header__menu__lvl3">
+                  <li class="menu__li--lvl3"><a class="header__menu__link--hover" href="#">Две колонки</a></li>
+                  <li class="menu__li--lvl3"><a class="header__menu__link--hover" href="#">Три колонки</a></li>
+              </ul>
+          </li>
+            </ul>
+        </li>
+        <li class="menu__li">
+            <label for="drop-5" class="toggle">Design <svg class="icon" height="13px" width="10px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve" >
+  <g>
+  	<polygon points="203.718,322.929 21.179,140.984 0,162.232 203.718,365.287 407.437,162.232 386.258,140.984  " fill="#666b6b"/>
+  	<polygon points="407.437,63.398 386.258,42.15 203.718,224.095 21.179,42.15 0,63.398 203.718,266.453  " fill="#666b6b"/>
+  </svg>
+  </label>
+            <a class="header__menu__link" href="#">Design <svg class="icon" height="13px" width="10px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve" >
+  <g>
+  	<polygon points="203.718,322.929 21.179,140.984 0,162.232 203.718,365.287 407.437,162.232 386.258,140.984  " fill="#666b6b"/>
+  	<polygon points="407.437,63.398 386.258,42.15 203.718,224.095 21.179,42.15 0,63.398 203.718,266.453  " fill="#666b6b"/>
+  </svg>
+  </a>
+            <input type="checkbox" id="drop-5"/>
+            <ul class="header__menu__lvl2">
+                <li class="menu__li--lvl2"><a class="header__menu__link" href="#">Tutorials</a></li>
+            </ul>
+        </li>
+        <li class="menu__li"><a class="header__menu__link" href="{{ "/Web-Services.html" | prepend: site.baseurl }}">Cервисы</a></li>
+        <li class="menu__li"><a class="header__menu__link" href="/Soft.html">Soft</a></li>
+
+      </ul>
+  </nav>
+</header>

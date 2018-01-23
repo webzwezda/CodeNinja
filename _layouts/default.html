@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+{% include head.html %}
+<body>
+{% include header.html %}
+<div class="wrap">
+
+<div class="menu__left--wrap">
+  {% if page.category  %}
+
+  <h2 class="menu__left__title">{{page.category}}</h2>
+  {% elsif page.categories %}
+  {% for cat in page.categories limit: 1 %}<h2 class="menu__left__title">{{cat}}</h2>{% endfor%}
+    {% else %}
+    <h2 class="menu__left__title">Реклама</h2>
+  {% endif %}
+
+    {% if page.category %}
+    {% assign pagecat = page.category %}
+      {% else %}
+      {% for cat in page.categories limit: 1 %}{% assign pagecat = {{cat}} %}</h2>{% endfor%}
+    {% endif %}
+
+
+{% for post in site.categories.[pagecat] %}
+  <nav class="left__nav">
+{% if post.url != page.url %}
+<a href="{{post.url}}" class="left__nav__link">{{post.title}}</a>
+{% endif %}
+</nav>
+{% endfor %}
+
+
+
+
+
+</div>
+  <div class="content">
+    <div class="main">
+  {{ content }}
+</div>
+  </div>
+
+</div>
+{% include footer.html %}
+</body>
+</html>
