@@ -6,7 +6,7 @@ layout: default
 <h1 class="post__title"><a href="{{post.url}}" class="post__link">{{post.title}}</a></h1>
 
   <p>{{post.description}}</p>
-  <a href="{{post.url}}" class="post__readmore">Читать</a>
+  <a href="{{post.url | prepend: site.baseurl | prepend: site.url }}" class="post__readmore">Читать</a>
 </article>
 
 {% endfor %}

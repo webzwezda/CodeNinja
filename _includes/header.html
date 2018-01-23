@@ -29,7 +29,7 @@
   </a>
             <input type="checkbox" id="drop-1"/>
             <ul class="header__menu__lvl2">
-              <li class="menu__li--lvl2 liDisplay--none"><a class="header__menu__link " href="{{"/Instructions.html" | prepend: site.url }}">Html&Css</a></li>
+              <li class="menu__li--lvl2 liDisplay--none"><a class="{{ "/Instructions/"  | prepend: site.baseurl | prepend: site.url}}">Html&Css</a></li>
                 <li class="menu__li--lvl2"><a class="header__menu__link" href="#">Ссылки</a></li>
                       <li class="menu__li--lvl2">
                     <label for="drop-3" class="toggle" style="background-color: #e0e0e0;">Шаблоны <svg class="icon" height="13px" width="10px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"  x="0px" y="0px" viewBox="0 0 407.437 407.437" style="enable-background:new 0 0 407.437 407.437;" xml:space="preserve" >
@@ -107,8 +107,8 @@
                 <li class="menu__li--lvl2"><a class="header__menu__link" href="#">Tutorials</a></li>
             </ul>
         </li>
-        <li class="menu__li"><a class="header__menu__link" href="{{ "/Web-Services/" | prepend: site.baseurl }}">Cервисы</a></li>
-        <li class="menu__li"><a class="header__menu__link" href="/Soft.html">Soft</a></li>
+        <li class="menu__li"><a class="header__menu__link" href="{{ "/Web-Services/" | prepend: site.baseurl | prepend: site.url }}">Cервисы</a></li>
+        <li class="menu__li"><a class="header__menu__link" href="{{ "/Soft/" | prepend: site.baseurl | prepend: site.url }}">Soft</a></li>
 
       </ul>
   </nav>
