@@ -37,8 +37,8 @@ git status //git незаметит файлы и папки указанные 
 <h3 id="gitsledi">Git следи!</h3>
 <p>Гит запомнит все что ему передали и будет готом подписать эти файлы нашим комментарием</p>
 {% highlight bash %}
-git add . //указываем определенный файл или точку(все файлы)
-git commit -m "firs commit"  // Гит закоминтирует файлы переданные ему командой git add .
+git add . //указываем определенный файл или точку
+git commit -m "firs commit"
 git log //логи коммитов
 git log -2 //покажет последние два коммита
 {% endhighlight %}
@@ -54,7 +54,7 @@ git reset HEAD index.html //Типо случайно удалили из stagin
 {% endhighlight %}
 <h3 id="push">Отправка на GitHub</h3>
 {% highlight bash %}
-git remote add origin https://github.com/webzwezda/CodeNindzya.git //Инициализация
-git remote set-url origin https://github.com/webzwezda/CodeNindzya.git // Изменение репозитория
-git push -u origin master //Отправка в  origin 
+git remote add origin [rep-name]
+git remote set-url origin [rep-name] //Переназначить 
+git push -u origin master //Отправка в  origin
 {% endhighlight %}
