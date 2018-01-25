@@ -56,6 +56,7 @@ git reset HEAD index.html //Типо случайно удалили из stagin
 <h3 id="push">Отправка на GitHub</h3>
 {% highlight bash %}
 git remote add origin [rep-name]
+git remote rm origin [rep-name] //Удалит
 git remote set-url origin [rep-name] //Переназначить
 git push -u origin master //Отправка в  origin
 {% endhighlight %}
@@ -72,5 +73,4 @@ git branch -d [NAME] //удалить ветку
 {% highlight bash %}
 git checkout -b gh-pages // -b создаст и перейдет
 {% endhighlight %}
-git checkout -b gh-pages
 <p>Если был конфликт при слиянии нужно исправить и сделать коммит что будет подтвердит слияние</p>
