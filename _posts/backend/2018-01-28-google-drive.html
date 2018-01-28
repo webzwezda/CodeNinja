@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "Прямые ссылки с Гугл диска"
+date:   2018-01-20
+category: Backend
+description: "Используем Google Drive как хостинг для видео, музыки и картинок для сайта."
+---
+<h3>Шаг 1</h3>
+<p>Загрузим файл на наш гугл диск в папку в которой установлен доступ всем в интернете или только тем у кого есть ссылка. Далее нужно открыть файл и потом как показанно на скриншоте открыть файл в новом окне.</p>
+<img target="_blank" src="{{"/image/other/link_googledrive1.png" | prepend: site.baseurl | prepend: site.url }}" alt="Скриншот гугл драйв" class="img__post">
+<h3>Шаг 2</h3>
+<p>После того как окрыли файл в новом окне браузера, взглянем на наш урл и увидим там айди файл</p>
+{% highlight html %}
+//1O_ppwCpcK4E7jETa8LogtqTKpLYvnsVT
+https://drive.google.com/file/d/1O_ppwCpcK4E7jETa8LogtqTKpLYvnsVT/view
+{% endhighlight %}
+<p>После того как мы получили айди файла нам нужны шаблоны урлов куда мы будем подставлять наш айди</p>
+{% highlight html %}
+//Для просмотра
+http://drive.google.com/uc?export=view&id=
+//Для скачивания
+https://drive.google.com/uc?export=download&confirm=no_antivirus&id=
+{% endhighlight %}
+<audio controls  src="http://drive.google.com/uc?export=view&id=1O_ppwCpcK4E7jETa8LogtqTKpLYvnsVT"></audio>
