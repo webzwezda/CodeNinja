@@ -5,3 +5,29 @@ date:   2018-01-31
 category: Js-Framework
 permalink: /modernizr/
 ---
+<ul class="ankor">
+  <li><a class="link" href="#testbrawser">Тест браузера</a></li>
+</ul>
+<h3 id="testbrawser">Тест Браузера</h3>
+<p>Modernizer 2.5.3 - Проверка технологий HTML5</p>
+{% highlight javascript %}
+<script type="text/javascript">
+
+        if (Modernizr.canvas) {
+            document.write("Поддержка элемента canvas <br />");
+        }
+
+        if (Modernizr.video.h264) {
+            document.write("Поддержка формата h264 <br />");
+        }
+
+        if (Modernizr.geolocation) {
+            document.write("Поддержка Geolocation API<br />");
+        }
+
+        if (Modernizr.inputtypes.color) {
+            document.write("Поддержка поля ввода типа color<br />");
+        }
+
+    </script>
+{% endhighlight %}

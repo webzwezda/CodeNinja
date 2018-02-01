@@ -8,6 +8,8 @@ permalink: /Instructions/
 <ul class="ankor">
   <li><a class="link" href="#podsk">Тег подсказка</a></li>
   <li><a class="link" href="#akkor">Аккордеон</a></li>
+  <li><a class="link" href="#time">Time</a></li>
+  <li><a class="link" href="#hiden">Скрыть</a></li>
 </ul>
 <h3>Теги strong и em</h3>
 {% highlight html %}
@@ -55,4 +57,16 @@ permalink: /Instructions/
 <article contenteditable>
   <h5>Езмени меня</h5>
 </article>
+{% endhighlight %}
+<h3 id="time">Тег time и его атребут</h3>
+{% highlight html %}
+<p>Опубликовано: <time datetime="2012-12-23T08:23:11+07:00">сегодня</time></p>
+<p><time>1957-10-04</time> запущен первый искусственный спутник Земли.</p>
+{% endhighlight %}
+<p>Опубликовано: <time datetime="2012-12-23T08:23:11+07:00">сегодня</time></p>
+<p><time>1957-10-04</time> запущен первый искусственный спутник Земли.</p>
+<h3 id="time">Атребут hiden="hiden"</h3>
+{% highlight html %}
+<div hidden="hidden">Этот тэг div Будет скрыт</div>
+<div>Hello World</div>
 {% endhighlight %}

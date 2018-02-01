@@ -1,0 +1,293 @@
+---
+layout: post
+title: "Forms & input html 5"
+date: 2018-02-01
+category: html-css
+description: "Памятка form & input "
+---
+<ul class="ankor">
+  <li><a class="link" href="#search">Search </a></li>
+  <li><a class="link" href="#emurl">email & url</a></li>
+  <li><a class="link" href="#datetime">Дата и время</a></li>
+  <li><a class="link" href="#number">input type="number"</a></li>
+  <li><a class="link" href="#rangevol">Громкость</a></li>
+  <li><a class="link" href="#donate">Пожертвование</a></li>
+  <li><a class="link" href="#authorization">Авторизация</a></li>
+  <li><a class="link" href="#autoutofocus">Автофокус</a></li>
+  <li><a class="link" href="#Placeholder">Placeholder</a></li>
+
+</ul>
+<h2>Forms</h2>
+{% highlight html %}
+<form>
+  <!--Кнопка, основное событие onclick-->
+  <input type="button" name="button1" value="Button1" />
+  <br />
+
+  <!--Флажок, основное событие onclick-->
+  <input type="checkbox" checked="checked" name="checbox1" /> Check Box 1
+  <br />
+
+  <!--Поле для ввода файла загружаймого на сервер, основное событие onchange-->
+  <input type="file" name="file1" value="" />
+  <br />
+
+  <!--Данные сохраняемые вместе с формой но невидимые пользователю.-->
+  <input type="hidden" name="hidden1" value="" />
+  <br />
+
+  <!--Поле для ввода пароля-->
+  <input type="password" name="password1" value=" " />
+  <br />
+
+  <!--Переключатель-->
+  Radio 1
+  <input type="radio" checked="checked" name="group1" />
+   Radio 2
+   <input type="radio" name="group1" />
+  <br />
+
+  <!--Кнопка очищающая значения формы.-->
+  <input type="reset" name="reset1" value="Reset" />
+  <br />
+  <br />
+
+  <!--Список в котором может быть выбран один элемент-->
+  <select name="select1">
+            <option value="value1">text 1</option>
+            <option value="value2">text 2</option>
+            <option value="value3">text 3</option>
+        </select>
+  <br />
+  <br />
+
+  <!--Список со множественным выбором-->
+  <select multiple="multiple" name="multipleSelect1">
+            <option value="value">text</option>
+            <option value="value">text</option>
+            <option value="value">text</option>
+        </select>
+  <br />
+  <br />
+
+  <!--Кнопка для передачи данных формы-->
+  <input type="submit" name="submit1" value="Submit" />
+  <br />
+
+  <!--Однострочное поле ввода-->
+  <input type="text" name="text1" value=" " />
+  <br />
+
+  <!--Многострочное поле ввода-->
+  <textarea name="textArea1" rows="4" cols="10"></textarea>
+</form>
+{% endhighlight %}
+<h3 id="search">Search</h3>
+{% highlight html %}
+<label for="search" accesskey="S">
+Найти
+</label>
+<input id="search" type="search" name="query" />
+{% endhighlight %}
+<h3 id="emurl">Проверка на емейл и на url</h3>
+{% highlight html %}
+<p>
+  <!--email - браузер проводит валидацию корректности введенного email адреса.
+При работе в мобильном браузере будет отображаться
+ специальная экранная клавиатура с символом @ и .com-->
+  <label>
+E-mail
+<input type="email" name="email" title="Формат данных не правельный. Только в Chrome" />
+</label>
+</p>
+<p>
+  <!--url - браузер проводит валидацию корректности введенного адреса.-->
+<label>
+Сайт
+<input type="url" name="website"
+title="Абсолютный URL. Обязательно с протоколом HTTP. Пример - http://html5readiness.com/" />
+</label>
+</p>
+<p>
+<!--  tel - мобильный браузер будет отображать экранную клавиатуру с цифрами -->
+<label>
+Телефон
+<input type="tel" name="phone" /></label>
+</p>
+<p>
+<input type="submit" value="Отправить" />
+</p>
+{% endhighlight %}
+<h3 id="datetime">Время, дата и их диапозон</h3>
+{% highlight html %}
+<form>
+<p>
+<label>
+<!--
+datetime - элемент для выбора даты и времени.
+На момент разработки данного примера работает только в Opera
+-->
+Укажите дату и время
+<input type="datetime" name="dateAndTime" /></label>
+</p>
+<p>
+<input type="submit" value="Отправить" />
+</p>
+</form>
+<form>
+<p>
+<label>
+<!--
+date - элемент для выбора даты. Отобржает всплывающий календарь.
+Атрибуты min и max определяют диапазон допустимых дат.
+-->
+Укажите дату
+<input type="date" name="date" min="2011-03-15" max="2012-03-14" /></label>
+</p>
+<p>
+<label>
+<!--
+time - элемент для выбора времени.
+Атрибуты min и max определяют диапазон допустимого времени.
+-->
+Укажите время
+<input type="time" name="time" min="08:00" max="18:00" /></label>
+</p>
+<p>
+<input type="submit" value="Отправить" />
+</p>
+</form>
+{% endhighlight %}
+<h3 id="number">Input type="number"</h3>
+{% highlight html %}
+<form>
+<p>
+<label>
+Количество
+<input type="number" name="quantity" />
+</label>
+</p>
+<p>
+<input type="submit" value="Отправить" />
+</p>
+</form>
+<form>
+<p>
+<label>
+Количество
+<input type="number" name="quantity" min="2" max="20" step="2" />
+</label>
+</p>
+<p>
+<input type="submit" value="Отправить" />
+</p>
+</form>
+{% endhighlight %}
+<h3 id="rangevol">Громкость</h3>
+{% highlight html %}
+<form>
+<p>
+<label>
+Громкость
+<input type="range"
+name="volume"
+min="2"
+max="10"
+step="1"
+value="5" /></label>
+</p>
+</form>
+{% endhighlight %}
+<h3 id="donate">Пожертвование</h3>
+{% highlight html %}
+<form>
+<p>
+<label>
+Сумма пожертвования
+<!--Элемент, который связанный с источником данных через атрибут list-->
+<input type="text" name="donation" list="donations" /></label>
+</p>
+<!--Источник данных-->
+<datalist id="donations">
+<option value="10.00">10.00 $</option>
+<option value="25.00">25.00 $</option>
+<option value="50.00">50.00 $</option>
+</datalist>
+<p>
+<input type="submit" value="Отправить" />
+</p>
+</form>
+{% endhighlight %}
+<h3 id="authorization">Авторизация</h3>
+{% highlight html %}
+<form>
+<fieldset>
+<legend>Aвторизация</legend>
+<p>
+<label>
+Имя пользователя
+<!-- Атрибут required указывает, что поле обязательное для заполнения  -->
+<input type="text" name="username" required="required" /></label>
+</p>
+<p>
+<label>
+Пароль
+<input type="password" name="pwd" required="required" /></label>
+</p>
+</fieldset>
+<p>
+<input type="submit" value="Отправить" />
+</p>
+</form>
+{% endhighlight %}
+<h3 id="autofocus">Автофокус</h3>
+{% highlight html %}
+<form>
+<p>
+<label>Первое поле<input type="search" name="query" /></label>
+</p>
+<p>
+<label>
+Второе поле с афтофокусом
+<!--
+Атрибут autofocus определяет элемент управления, который получит фокус,
+ когда загрузится страница
+-->
+<input type="search" name="query" autofocus="autofocus" /></label>
+</p>
+<p>
+<input type="submit" value="Отправить" />
+</p>
+</form>
+{% endhighlight %}
+<h3 id="Placeholder">Placeholder</h3>
+{% highlight html %}
+<form>
+<!--
+Атрибут placeholder используется для того что бы определить подсказку
+отображаемую в поле ввода до того как пользователь начнет вводить текст
+-->
+<fieldset>
+<legend>Контактная инфомациж</legend>
+<p>
+<label>
+Адpec электронной почты
+<input type="email" name="email" placeholder="user@domain.com" /></label>
+</p>
+<p>
+<label>
+Сайт<input type="url" name="website" placeholder="http://www.domain.com/" />
+</label>
+</p>
+<p>
+  <label>
+Телефон
+<input type="tel" name="phone" placeholder="123-12-34" />
+</label>
+</p>
+</fieldset>
+<p>
+<input type="submit" value="Отправить" />
+</p>
+</form>
+{% endhighlight %}
