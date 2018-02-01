@@ -5,8 +5,13 @@ date:   2017-10-12 15:14:22 +1000
 category: html-css
 permalink: /Instructions/
 ---
+<ul class="ankor">
+  <li><a class="link" href="#podsk">Тег подсказка</a></li>
+  <li><a class="link" href="#akkor">Аккордеон</a></li>
+</ul>
 <h3>Теги strong и em</h3>
 {% highlight html %}
+<mark>HTML5</mark>//Выделит желтым фоном
 <strong>Выделяется жирным и интонацие говорилкой</strong>
 <b>Просто жирный</b>
 <em>Выделяется курсивом и интонацие говорилкой</em>
@@ -16,4 +21,38 @@ permalink: /Instructions/
 {% highlight html %}
 <a class="link" target="_blank" href="#">Откроется в новом окне</a>
 <a href="images/xxx.jpg" download>Скачать файл</a>
+{% endhighlight %}
+<h3 id="podsk">Тег подсказка</h3>
+<p>Служит для ввода незнакомых слов в текст</p>
+{% highlight html %}
+<abr title="Всплываюзий текст">Незнакомое определение</abr>
+{% endhighlight %}
+<abr title="Всплываюзий текст">Незнакомое определение</abr>
+<h3 id="akkor">Аккордеон HTML5</h3>
+{% highlight html %}
+<details open>
+  <summary>Open</summary>
+  <ul>
+    <li>www</li>
+    <li>leningrad</li>
+    <li>ppp</li>
+    <li>.ru</li>
+  </ul>
+</details>
+{% endhighlight %}
+<details open>
+  <summary>Open</summary>
+  <ul>
+    <li>www</li>
+    <li>leningrad</li>
+    <li>ppp</li>
+    <li>.ru</li>
+  </ul>
+</details>
+<h3>Article</h3>
+<p>Редактирование текста на стороне клиента</p>
+{% highlight html %}
+<article contenteditable>
+  <h5>Езмени меня</h5>
+</article>
 {% endhighlight %}
