@@ -21,15 +21,15 @@
       {% for cat in page.categories limit: 1 %}{% assign pagecat = {{cat}} %}</h2>{% endfor%}
     {% endif %}
 
-
+<nav class="left__nav">
 {% for post in site.categories.[pagecat] %}
-  <nav class="left__nav">
+
 {% if post.url != page.url %}
 <a href="{{post.url | prepend: site.baseurl | prepend: site.url }}" class="left__nav__link">{{post.title}}</a>
 {% endif %}
-</nav>
-{% endfor %}
 
+{% endfor %}
+</nav>
 
 
 

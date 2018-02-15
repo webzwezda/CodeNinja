@@ -8,7 +8,11 @@ $colorHtml: #eeeeee;
 img {
   max-width: 100%;
 }
-
+abr{
+  text-decoration: underline;
+  font-style: oblique;
+  color: #03a9f4;
+}
 
 html {
   font-size: 20px;
@@ -25,27 +29,30 @@ body {
 header {
   flex: 0 0 auto;
 }
+$FontTitleFamily: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+@mixin textStyleTitle ($FontTitleMargin, $FontTitleSize, $FontHeight: 3rem ){
+  margin:  $FontTitleMargin;
+  font-size: $FontTitleSize;
+  font-family: $FontTitleFamily;
+  line-height: $FontHeight;
+}
 .page__title,
 .post__title {
-  margin: 1.5rem 0;
-  font-size: 2rem;
+  @include textStyleTitle( 1.5rem 0, 2rem ) ;
   text-align: center;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-
-
-  line-height: 3rem;
 }
+.menu__left__title {
+  @include textStyleTitle( 1.5rem 4%, 1.8rem ) ;
+  font-weight: lighter;
+}
+
 h2 {
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  text-decoration: underline;
-  margin: 0.5rem 0;
-  font-size: 1.6;
+  font-family: $FontTitleFamily;
 }
 
 h3 {
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font-family: $FontTitleFamily;
   font-size: 1.3rem;
-
   font-weight: lighter;
 }
 
@@ -58,18 +65,16 @@ h3 {
     }
   }
 }
-
 .ankor {
   text-align: right;
   list-style: none;
+  padding: 0;
 
-
-
-}
-.link {
-  font-family: "Georgia";
-  text-decoration: none;
-  color: #01579b;
+  a {
+    font-family: "Georgia";
+    text-decoration: none;
+    color: #01579b;
+  }
 }
 .site-footer {
   margin: 2rem 0 0;
@@ -91,28 +96,14 @@ h3 {
 
 .left__nav {
   margin: 0 4%;
-
-  & a:first-child {
-    margin-top: -.1rem;
-  }
-}
-
-.menu__left__title {
-  margin: 1.6rem 4%;
-  font-size: 2rem;
-  font-family: "Palatino Linotype";
-  font-weight: lighter;
-  text-decoration: none;
-  line-height: 3rem;
 }
 
 .left__nav__link {
   display: block;
   margin: 0.5rem 0;
   text-decoration: none;
-  font-family: sans-serif;
+  font-family: "Georgia";
   color: #333333;
-  font-family: "Courier New";
 
   &:hover {
     color: #000;
@@ -145,11 +136,9 @@ footer {
 // POST
 
 p {
-
-  font-size: 1.1rem;
-  line-height: 27px;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  font-weight: 500;
+  font-size: 1rem;
+  line-height: 25px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
   margin: 0.5rem 0;
 }
 

@@ -1,0 +1,23 @@
+---
+layout: post
+title:  "Зачем использовать Sass"
+date:   2018-02-09
+category: html-css
+description: "Зачем нужно использовать Sass и почему его использую я, постораемся разобрать практичные примеры и лучшие практики"
+---
+<ul class="ankor">
+  <li><a class="link" href="#install">Установка</a></li>
+  <li><a class="link" href="#FirstStart">Первый запуск</a></li>
+</ul>
+<h2 id="install">Установка</h2>
+<p>Нам понадобится <abr title="Установщик Ruby language для Windows"><a href="https://rubyinstaller.org/" class="link">RybuInstaller</a></abr>, по окончанию установки вылезит командное окно в котором вас спросят нужен ли вам набор разработчика? выбираем третий вариант, а лучше установите все по очереди сначало первый потом второй и третий вариант. Ну что бы наверняка.</p>
+<p>Далее проверяем установлен ли sass, воспользуемся <abr title="оболочка командной строки">PowerShell</abr> в Windows 10 он уже установлен, вызовем его Shift+<abr title="Правая кнопка мыши">ПКМ</abr></p>
+{% highlight bash %}
+sass -v
+{% endhighlight %}
+<p>Если покажет версию нашего sass гема то можно продолжать, а если не покажет введите команду</p>
+{% highlight bash %}
+gem install sass
+{% endhighlight %}
+<h2 id="FirstStart">Первый Запуск</h2>
+<p>Скачайте маленькую пример песочницу <a download href="{{ "/files/sass__example.rar"  | prepend: site.baseurl | prepend: site.url}}" class="link">Скачать</a></p>
