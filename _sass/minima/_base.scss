@@ -1,18 +1,25 @@
 $colorHtml: #eeeeee;
 
+
+@mixin codeQuote( $margQuote, $padQuote, $fsize: .8rem,  $bgc: #e1f5fe ) {
+  background-color: $bgc;
+  margin: $margQuote;
+  padding: $padQuote;
+  font-size: $fsize;
+}
 .highlight {
-  margin-left: 1rem;
-  padding: 0.1rem 0.1rem 0.1rem 0.5rem;
+  @include codeQuote($margQuote: 0 0 0 1rem, $padQuote: .3rem);
+}
+blockquote {
+  @include codeQuote($margQuote: 0 0 0 1rem, $padQuote: .6rem, $fsize: 1rem );
+  text-align: right;
+  font-family: "Georgia", serif;
 }
 
 img {
   max-width: 100%;
 }
-abr{
-  text-decoration: underline;
-  font-style: oblique;
-  color: #03a9f4;
-}
+
 
 html {
   font-size: 20px;
@@ -25,7 +32,9 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+strong, b {
+    font-weight: bold !important;
+}
 header {
   flex: 0 0 auto;
 }
@@ -58,12 +67,6 @@ h3 {
 
 .main {
   margin: 0 4%;
-
-  p {
-    a {
-      color: #01579b;
-    }
-  }
 }
 .ankor {
   text-align: right;
@@ -96,23 +99,16 @@ h3 {
 
 .left__nav {
   margin: 0 4%;
-}
 
-.left__nav__link {
-  display: block;
-  margin: 0.5rem 0;
-  text-decoration: none;
-  font-family: "Georgia";
-  color: #333333;
+  ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
 
-  &:hover {
-    color: #000;
-  }
-
-  &:active {
-    text-decoration: underline;
   }
 }
+
+
 
 .content {
   order: 1;
@@ -121,14 +117,6 @@ h3 {
   background-color: #fff;
 }
 
-blockquote {
-  text-align: right;
-  font-family: "Comic Sans MS";
-}
-
-strong {
-  font-weight: bold !important;
-}
 
 footer {
   flex: 0 0 10%;

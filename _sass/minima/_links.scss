@@ -1,0 +1,76 @@
+$LinkTextStyle_1: (
+  LinkColor: #01579b,
+  LinkSize: 1rem,
+);
+@mixin link ($LinkColor, $LinkSize, $LinkMargin: auto) {
+  color: $LinkColor;
+  font-size: $LinkSize;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+
+  &:after {
+    background-color: $LinkColor;
+    margin: $LinkMargin;
+    display: block;
+    content: "";
+    height: 3px;
+    width: 0;
+    -webkit-transition: width 150ms ease, background-color 150ms ease;
+    transition: width 150ms ease, background-color 150ms ease;
+  }
+
+  &:hover:after,
+  :focus:after {
+    width: 100%;
+  }
+}
+
+.link{
+  @include link($LinkTextStyle_1...);
+}
+.link--2{
+  @include link($LinkMargin: null, $LinkTextStyle_1...);
+}
+
+.abr{
+  font-style: oblique;
+  color: #0277bd;
+  display: inline-block;
+
+ &:after{
+   background-color: #0277bd;
+   display: block;
+   content: "";
+   height: 3px;
+   width: 100%;
+   -webkit-transition: width 150ms ease, background-color 150ms ease;
+   transition: width 150ms ease, background-color 150ms ease;
+ }
+}
+
+abr{
+a{
+  @include link($LinkMargin: null, $LinkTextStyle_1...);
+}
+}
+.left__nav__link {
+  display: inline-block;
+  margin: .3rem 0;
+  text-decoration: none;
+  font-family: "Georgia";
+  color: #333333;
+
+  &:first-child{
+    margin: 0 0 .3rem 0;
+  }
+
+  &:hover {
+    color: #000;
+  }
+
+  &:active {
+    text-decoration: underline;
+  }
+
+}
