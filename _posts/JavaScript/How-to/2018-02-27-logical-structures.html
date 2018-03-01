@@ -1,0 +1,162 @@
+---
+layout: post
+title: "Логические структуры"
+date: 2018-02-25
+category: How-To
+description: "Синтаксис и примитивное применение логических структур JavaScripta"
+---
+<ul class="ankor">
+  <li><a class="link" href="#ifelse">if & else</a></li>
+  <li><a class="link" href="#Else_if">Else if</a></li>
+  <li><a class="link" href="#istina">Таблица истинности && и ||</a></li>
+</ul>
+<h3>Тернарный оператор</h3>
+<p>Включает в себя три операнда - ( условие ? Если условие ИСТИННО : Если условие ЛОЖНО ).</p>
+<p>Переменной max, присваиваем возвращаемое значение тернарного оператора.</p>
+{% highlight javascript %}
+var a = 1, b = 2, max = 0;
+
+// ЕСЛИ:  (a > b)  ТО:  вернуть a  ИНАЧЕ: вернуть b;
+
+max = (a > b) ? a : b;
+
+document.write(max);
+{% endhighlight %}
+<h3 >Знак "!"</h3>
+<p>Знак восклицания меняет логическое значение на противоположное.</p>
+{% highlight javascript %}
+
+var trueVal = true;
+var falseVal = false;
+
+if (trueVal) {
+    document.write("Первый блок if выполнился");
+}
+else if (!falseVal) {
+    document.write("Второй блок else if выполнился");
+}
+else {
+    document.write("Ни один блок не выполнился");
+}
+{% endhighlight %}
+<h3 id="ifelse">If & Else</h3>
+{% highlight javascript %}
+var a = prompt("Введите число 22", "0");
+
+if (a == "22") {
+  document.write("Введенное значение верно");
+}
+else {
+  document.write("Введенное значение НЕ верно");
+}
+
+document.write(" <br/>Эта строка выполнится в любом случае");
+{% endhighlight %}
+<h3 id="Else_if">Else if</h3>
+{% highlight javascript %}
+var a = prompt("Введите слово Hello, или World", "Hello");
+
+if (a == "Hello" || a == 'hello') {
+    document.write("Введенное значение верно и равно Hello");
+}
+else if (a == "World" || a == 'world') {
+   // Выполнится если выражение в перконструкции будет false
+    document.write("Введенное значение верно и равно World");
+}
+else {
+    document.write("Введенное значение НЕ верно");
+}
+
+document.write("<br/>Эта строка выполнится в любом случае");
+{% endhighlight %}
+<h3 id="#switch">Switch</h3>
+{% highlight javascript %}
+var day = prompt("Введите номер дня недели: 1-2-3-4-5-6-7:");
+
+switch (day) {
+
+    case "1":
+        {
+            document.write("Понедельник");
+        };
+        break;
+    case "2":
+        {
+            document.write("Вторник");
+        };
+        break;
+    case "3":
+        {
+            document.write("Среда");
+        };
+        break;
+    case "4":
+        {
+            document.write("Четверг");
+        };
+        break;
+    case "5":
+        {
+            document.write("Пятница");
+        };
+        break;
+    case "6":
+        {
+            document.write("Суббота");
+        };
+        break;
+    case "7":
+        {
+            document.write("Воскресенье");
+        };
+        break;
+    default:
+        {
+            document.write("Вы ввели несуществующий день недели");
+        };
+}
+{% endhighlight %}
+<p>Второй пример использования Switch</p>
+{% highlight javascript %}
+var day = prompt("Введите номер дня недели: 1-2-3-4-5-6-7: ", "");
+
+switch (day) {
+    case "1":
+    case "2":
+    case "3":
+    case "4":
+    case "5":
+        document.write("Этот день недели - Рабочий.");
+        break;
+    case "6":
+    case "7":
+        {
+            document.write("Этот день недели - Выходной.");
+        }
+        break;
+    default:
+        {
+            document.write("Вы ввели несуществующий день недели.");
+        }
+        break;
+}
+{% endhighlight %}
+<h3 id="istina">Таблица истинности && и ||</h3>
+<p>Скромная памятка в виде таблицы.</p>
+{% highlight javascript %}
+/*
+Таблица истинности логического И (&&):
+true  && true = true
+false && true = false
+true  && false = false
+false && false = false
+*/
+
+/*
+Таблица истинности логического ИЛИ (||):
+true  || true = true
+false || true = true
+true  || false = true
+false || false = false
+*/
+{% endhighlight %}

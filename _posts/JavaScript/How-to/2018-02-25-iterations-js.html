@@ -1,0 +1,98 @@
+---
+layout: post
+title: "Циклические конструкции"
+date: 2018-02-25
+category: How-To
+description: "Тут я постарался собрать самые простые и очевидные итерационные циклы в JavaScript"
+---
+<ul class="ankor">
+  <li><a class="link" href="#while">While</a></li>
+  <li><a class="link" href="#Do_While">Do While</a></li>
+  <li><a class="link" href="#Diecs">Цикл Дейкстры.</a></li>
+</ul>
+<h2 id="while">While</h2>
+<p>Цикл while - выполняется до тех пор, пока условие удовлетворяет истиности.</p>
+{% highlight JavaScript %}
+var str = "Угадайте задуманный цвет с пяти попыток.";
+
+var maxAttempt = 5;   // Допустимое количество попыток.
+var attempt = 0;      // Счетчик попыток.
+var color = "red";    // Задуманный цвет.
+
+while (attempt < maxAttempt) {
+    attempt++;
+
+    value = prompt(str + " Попытка " + attempt, "");
+
+    if (value == null) {
+        break;
+    }
+
+    if (value != color) {
+        str = "Вы не угадали.";
+        continue;
+    }
+
+    document.write("<p>Поздравляем, Вы угадали с " + attempt + " попытки!");
+    break;
+}
+
+document.write("<p>Конец игры!");
+{% endhighlight %}
+<h3 id="Do_While">Циклическая конструкция Do While</h3>
+<p>Цикл с постустловием do-while - это цикл, в котором условие проверяется после выполнение тела цикла. Тело цикла выполняется хотя бы раз.</p>
+{% highlight JavaScript %}
+var input;
+
+do {
+    input = prompt("Введите некоторое значение.");
+    document.write("<p>" + input);
+}
+while (input != null);
+{% endhighlight %}
+<h3 id="Diecs">Цикл Дейкстры.</h3>
+<p>При выполнении цикла Дейкстры в каждой итерации происходит вычисление охраняемых условий.</p>
+<p>Цикл Дейкстры с одним охраняющим условием и одной охраняемой командой представляет собой, по сути, обычный цикл с предусловием (цикл «while»).</p>
+{% highlight JavaScript %}
+var a;
+
+for (; ;) {
+
+    a = prompt("Введите направление l/r/t/b");
+
+    switch (a) {
+        case 'l': // 'l' - охраняющее условие 1.
+            {
+                document.write("на лево <br />");    // охраняемая команда.
+                continue;
+            }
+        case 'r': // 'r' - охраняющее условие 2.
+            {
+                document.write("на право <br />");   // охраняемая команда.
+                continue;
+            }
+        case 't': // 'l' - охраняющее условие 1.
+            {
+                document.write("вверх <br />");    // охраняемая команда.
+                continue;
+            }
+        case 'b': // 'r' - охраняющее условие 2.
+            {
+                document.write("вниз <br />");   // охраняемая команда.
+                continue;
+            }
+        default:
+            {
+                exit = confirm("Выйти?");
+                if (exit) {
+                    document.write("Вы завершили выполнение.");
+                    break;
+                }
+                else {
+                    continue;
+                }
+            }
+    }
+    break;  // Прерывание цикла.
+}
+{% endhighlight %}

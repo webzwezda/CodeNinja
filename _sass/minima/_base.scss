@@ -8,7 +8,7 @@ $colorHtml: #eeeeee;
   font-size: $fsize;
 }
 .highlight {
-  @include codeQuote($margQuote: 0 0 0 1rem, $padQuote: .3rem);
+  @include codeQuote(0 0 0 1rem, .3rem, $bgc: #f5f5f5);
 }
 blockquote {
   @include codeQuote($margQuote: 0 0 0 1rem, $padQuote: .6rem, $fsize: 1rem );
