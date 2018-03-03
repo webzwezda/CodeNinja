@@ -22,7 +22,7 @@ img {
 
 
 html {
-  font-size: 20px;
+  font-size: 18px;
   height: 100%;
   background-color: $colorHtml;
 }
@@ -95,6 +95,7 @@ h3 {
   order: 2;
   margin: 2% 0 0 1%;
   background-color: #fff;
+  padding-bottom: 1rem;
 }
 
 .left__nav {
@@ -115,6 +116,7 @@ h3 {
   flex: 1 0 68%;
   margin: 2% 1% 0 0;
   background-color: #fff;
+  padding-bottom: 1rem;
 }
 
 

@@ -1,0 +1,71 @@
+---
+layout: post
+title: "Массивы"
+date: 2018-03-01
+category: JavaScript
+description: "Основы массивов в JavaScript"
+---
+<ul class="ankor">
+  <li><a class="link" href="#while">While</a></li>
+  <li><a class="link" href="#Do_While">Do While</a></li>
+  <li><a class="link" href="#Diecs">Цикл Дейкстры.</a></li>
+</ul>
+<p><b>Массивы в JavaScript</b> - это именованный набор не строго типизированный переменных, расположенных в памяти непосредственно друг за другом, доступ к которым осуществляется по индексу.</p>
+{% highlight JavaScript %}
+var d = ["Hello", 34, true];
+{% endhighlight %}
+<p>Массив - обьект,  у которого имеется свойство length, это свойство хранит в себе длину массива.</p>
+<p>Это свойство удаляет и/или добавляет елементы массива в зависимости от присвоения неотрицательного целого числа.</p>
+{% highlight JavaScript %}
+var array = ['h', 'e', 'l', 'l', 'o'];
+
+array.length = 7;
+
+for (var i = 0; i < array.length; i++) {
+    document.write(array[i] + "<br />");
+}
+
+document.write("<hr />");
+{% endhighlight %}
+<h3>Аcсоциативные массивы</h3>
+{% highlight JavaScript %}
+var laptop = { cpu: "Core i7", ram: "4 GB", screen: "15" };
+
+var key = prompt("Введите интересующий параметр (ram, cpu, screen)", "");
+
+var value = laptop[key];
+document.write(value + "<hr/>");
+{% endhighlight %}
+<h3>Двумерная матрица</h3>
+<p>Массивы бывают многомерными, для этого в каждый элемент массива следует расположить еще один массив. Таким образом возможно реализовать n-мерный массив.</p>
+{% highlight JavaScript %}
+var table = new Array(10);
+
+for (var i = 0; i < table.length; i++) { // В таблице 10 строк
+    table[i] = new Array(10);            // В каждой строке 10 столбцов
+}
+
+// Инициализация массива.
+for (var row = 0; row < table.length; row++) {
+    for (var col = 0; col < table[row].length; col++) {
+        if ((row + col) % 2 == 1)
+            table[row][col] = "1";
+        else
+            table[row][col] = "0";
+        //document.write(table[row][col]); //вывод заполненой ячейки сразу
+    }
+    // document.write("<br/>");//разрыв строки
+        }
+
+//table[8][1] = "<img src='images/parquet3.jpg' width='50' height='50'/>";
+
+for (var row = 0; row < table.length; row++) {
+    for (var col = 0; col < table[row].length; col++) {
+        document.write(table[row][col]);
+    }
+    document.write("<br/>");
+}
+
+var prod = table[8][1];
+document.write("<hr/>" + prod);
+{% endhighlight %}
