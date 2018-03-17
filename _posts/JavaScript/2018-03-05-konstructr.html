@@ -1,0 +1,224 @@
+---
+layout: post
+title: "Конструкторы и прототипы"
+date: 2018-03-01
+category: JavaScript
+description: "Конструкторы и прототипы в JavaScript"
+---
+<ul class="ankor">
+  <li><a class="link" href="#str">Стандартные</a></li>
+  <li><a class="link" href="#proto">Прототип</a></li>
+  <li><a class="link" href="#logic">Логическое</a></li>
+  </ul>
+<h3 id="str">Конструктор Object()</h3>
+<p>Добавлять новые свойства и методы можно только к объектам созданым через оператор new.</p>
+<p>У нами созданного объекта есть прототип и у этого прототипа есть тоже прототип в котором хронятся нативные методы объекта.</p>
+{% highlight JavaScript %}
+var point = new Object();
+point.x = 10;
+point.y = 15;
+
+document.write("Значение свойства x:" + point.x + "<br />");
+document.write("Значение свойства y:" + point.y + "<br />");
+{% endhighlight %}
+<h3 id="str">Конструктор Date()</h3>
+<p>При вызове конструктора Date без параметров, создается объект Date отражающий текущую дату и время</p>
+{% highlight JavaScript %}
+var myDate = new Date();
+
+document.write("Текущая дата и время: " + myDate);
+{% endhighlight %}
+<h3 id="str">Конструктор Array()</h3>
+{% highlight JavaScript %}
+// пустой массив
+var a = new Array();
+
+// массив на 6 элементов
+var b = Array(1, 2, 3, 4, 5, 6);
+
+document.write(b);
+
+document.write("<br />===========================================================<br />");
+
+// массив на 10 элементов
+var c = Array(10);
+
+document.write(c);
+{% endhighlight %}
+<h3 id="str">Конструктор String()</h3>
+
+{% highlight JavaScript %}
+// переменая со строковым значеним
+var simpleStr = "My String";
+
+// объект типа String
+var objectStr = new String("some String object");
+
+function newLine(str) {
+    document.write(str + "<br />");
+    document.write("==========================<br />");
+}
+
+newLine(simpleStr);
+
+newLine(objectStr);
+
+//
+objectStr.customProperty = 123;
+document.write(objectStr.customProperty + "<br />");
+
+// добавить свойство в simpleStr невозможно
+simpleStr.customProperty2 = 123;
+document.write(simpleStr.customProperty2);
+{% endhighlight %}
+<h3 id="str">Конструктор Function()</h3>
+<p>Создаем функцию, которая принимает два параметра с именем x и y и тело, которое возвращает их сумму.</p>
+{% highlight JavaScript %}
+var func = new Function("x", "y", "return x + y;");
+var result = func(20, 10);
+
+alert("Результат выполнения первой функции " + result);
+
+// создаем функцию без параметров, которая отображает модальное окно
+var func2 = new Function("alert('Hello!!!')");
+func2();
+{% endhighlight %}
+<h3 id="kst">Кастомные функции</h3>
+<p>Как обычная функция только использует this</p>
+{% highlight JavaScript %}
+function Point(x, y) {
+    this.x = x;
+    this.y = y;
+}
+
+// Создание трех экземпляров класса Point
+
+var leftTop = new Point(0, 0);
+var topPoint = new Point(15, 30);
+var rightBottom = new Point(30, 30);
+
+// Вывод координат созданых точек
+document.write("Координаты нашего треугольника:<br /><br />");
+document.write("Координаты первой точки: " + leftTop.x + " , " + leftTop.y + "<br />");
+document.write("Координаты первой точки: " + topPoint.x + " , " + topPoint.y + "<br />");
+document.write("Координаты первой точки: " + rightBottom.x + " , " + rightBottom.y + "<br />");
+{% endhighlight %}
+<p>Когда в объект помещаем свойство, а этому свойству в качестве значения задаем функцию то это новое значение будет методом.</p>
+{% highlight JavaScript %}
+// Функция-конструктор для создания объектов Human.
+
+function Human(name) {
+    // свойство
+    this.firstName = name;
+
+    // метод - свойство объекта, которое содежит значение в виде функции.
+    this.sayHello = function () {
+        document.write("Hello! My name is " + this.firstName + "<br /> ");
+    }
+}
+
+// Создание двух экземпляров типа Human
+
+var h = new Human("Homer");
+var r = new Human("Rocky");
+
+// Вызов метода SayHello() на созданых обьектах.
+h.sayHello();
+r.sayHello();
+{% endhighlight %}
+<h3>Вариант 2</h3>
+{% highlight JavaScript %}
+var Friend = function (mood) {
+
+    this.mood = mood;
+
+    // если настроение "хорошее"
+    if (mood === "nice") {
+        this.talk = function () {
+            alert("Hello what's up?");
+        };
+    }
+    // если настроение "плохое"
+    else if (mood === "bad") {
+        this.talk = function () {
+            alert("Sorry, I don't want talk with you.");
+        };
+    }
+    // если настроение не определено
+    else {
+        this.talk = function () {
+            alert("Hi");
+        };
+    }
+}
+
+var friendMood = prompt("Type friend mood (nice/bad):");
+var David = new Friend(friendMood);
+
+David.talk();
+{% endhighlight %}
+<h3>Вариант 3</h3>
+{% highlight JavaScript %}
+function Point(x, y) {
+
+    // свойства экземпляра
+    this.x = x;
+    this.y = y;
+
+    // метод экземпляра
+    this.print = function () {
+        document.write("(" + this.x + ", " + this.y + ")<br />");
+    }
+}
+
+// свойство функции конструктора (аналог статических свойств).
+Point.MaxPointCount = 100;
+
+// Метод функции-конструктора (аналог статическгого метода).
+Point.getOrigin = function () {
+    return new Point(0, 0) // this использовать недопустимо.
+}
+
+// создание экземпляров и работа с свойствами и методами экземпляров.
+var p1 = new Point(100, 200);
+p1.x = 300;
+p1.y = 400;
+p1.print();
+
+var p2 = new Point(100, 200);
+p2.print();
+
+// работа с свойством и методом функции-конструктора.
+Point.MaxPointCount = 10;
+Point.getOrigin().print();
+{% endhighlight %}
+<h3 id="proto">Прототип</h3>
+{% highlight JavaScript %}
+function Rectangle(w, h) {
+    // Свойства
+    this.width = w;
+    this.height = h;
+}
+
+Rectangle.prototype.getArea = function () {
+    return this.width * this.height;
+}
+
+Rectangle.prototype.name = "RECTANGLE";
+
+var rect1 = new Rectangle(100, 50);
+var rect2 = new Rectangle(30, 150);
+
+document.write("Площадь прямоугольника 1 " + rect1.getArea() + "<br />");
+document.write("Площадь прямоугольника 2 " + rect2.getArea() + "<br /><br />");
+
+document.write("Имя прямоугольника 1 " + rect1.name + "<br />");
+document.write("Имя прямоугольника 2 " + rect2.name + "<br /><br />");
+
+//rect1.name = "first rectangle";
+Rectangle.prototype.name = "first rectangle";
+
+document.write("После смены имени объекта rect1<br/>")
+document.write("Имя прямоугольника 1 " + rect1.name + "<br />");
+document.write("Имя прямоугольника 2 " + rect2.name + "<br />");
+{% endhighlight %}

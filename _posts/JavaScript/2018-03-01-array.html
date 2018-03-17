@@ -6,10 +6,9 @@ category: JavaScript
 description: "Основы массивов в JavaScript"
 ---
 <ul class="ankor">
-  <li><a class="link" href="#while">While</a></li>
-  <li><a class="link" href="#Do_While">Do While</a></li>
-  <li><a class="link" href="#Diecs">Цикл Дейкстры.</a></li>
-</ul>
+  <li><a class="link" href="#dvm">Двумерная матрица</a></li>
+  <li><a class="link" href="#mtd">Методы массива</a></li>
+  </ul>
 <p><b>Массивы в JavaScript</b> - это именованный набор не строго типизированный переменных, расположенных в памяти непосредственно друг за другом, доступ к которым осуществляется по индексу.</p>
 {% highlight JavaScript %}
 var d = ["Hello", 34, true];
@@ -36,7 +35,7 @@ var key = prompt("Введите интересующий параметр (ram,
 var value = laptop[key];
 document.write(value + "<hr/>");
 {% endhighlight %}
-<h3>Двумерная матрица</h3>
+<h3 id="dvm">Двумерная матрица</h3>
 <p>Массивы бывают многомерными, для этого в каждый элемент массива следует расположить еще один массив. Таким образом возможно реализовать n-мерный массив.</p>
 {% highlight JavaScript %}
 var table = new Array(10);
@@ -68,4 +67,155 @@ for (var row = 0; row < table.length; row++) {
 
 var prod = table[8][1];
 document.write("<hr/>" + prod);
+{% endhighlight %}
+<h3 id="mtd">Методы массива</h3>
+<p>Особенность метода join в том что он не обрабатывает последний элемент массива.</p>
+{% highlight JavaScript %}
+var arr = ["September", "October", "November",
+   "December", "January", "Fabruary", "March",
+    "April", "May", "June", "Jull", "August"];
+
+document.write(arr);
+
+document.write("<p><b>Значение которое возвращает метод - join(' | ');</b>");
+
+var res = arr.join(" | ");
+document.write("<p>" + res);
+
+document.write("<p><b>Значение которое возвращает метод - join(< br/ >);</b>");
+
+res = arr.join("<br/>");
+document.write("<p>" + res);
+{% endhighlight %}
+<h3>Добавление в массив</h3>
+<p>concat() -  создает и возвращает новый массив, содержащий элементы исходного массива,
+    для которого был вызван метод concat(), и значения всех аргументов, переданных методу concat().</p>
+{% highlight JavaScript %}
+var a = [1, 2, 3];
+
+var input = prompt("Введите новый элемент массива:", "");
+
+while (input != null) {
+    a = a.concat(input);
+    input = prompt("Введите новый элемент массива:", "");
+}
+
+document.write(a.join("<br />"));
+{% endhighlight %}
+<h3>Метод reverse()</h3>
+<p>Элементы массива с конца.</p>
+{% highlight JavaScript %}
+var a = new Array(1, 2, 3, 4, 5, 6, 7);
+
+a.reverse()
+
+document.write(a.join("<br/>"));
+{% endhighlight %}
+<h3>Метод slice()</h3>
+<p>slice() - Возвращает фрагмент или подмассив указанного массива.</p>
+{% highlight JavaScript %}
+var a = [1, 2, 3, 4, 5, 6, 7];
+
+// slice(начальный индекс (включительно), конечный индекс (не включительно));
+var star = 2;
+var end = 6;
+var temp = a.slice(star, end);
+document.write("<p>" + temp);
+
+// slice(начальный индекс); -  возвращает подмассив от указанного индекса до конца массива.
+temp = a.slice(3); // 4, 5, 6, 7
+document.write("<p>" + temp);
+
+// Если аргумент отрицательный - он задает позицию относительно конца массива.
+temp = a.slice(1, -2); // 2, 3, 4, 5, 6
+document.write("<p>" + temp);
+{% endhighlight %}
+<h3>Метод splice()</h3>
+<p>Метод splice() - универсальный метод для вставки и удаления элементов из массива, возвращает массив из удаленных элементов.</p>
+{% highlight JavaScript %}
+var a = [1, 2, 3, 4, 5, 6, 7];
+document.write("<p>Исходный массив: " + a);
+
+// УДАЛЕНИЕ.
+
+/* splice (начальный индекс, сколько элементов удалить);
+Если второй аргумент опущен, удаляются элементы массива до конца массива */
+
+var d = a.splice(1, 3);   // Будут удалены: 2, 3, 4
+document.write("<p>Удалены: " + d);
+document.write("<p>Остались: " + a);
+
+// ВСТАВКА.
+
+/*(начальный индекс = 1, сколько элементов удалить = 0, значения для вставки с начальниндекса = 2, 3, 4); */
+a.splice(1, 0, 2, 3, 4);
+document.write("<p>После вставки: " + a);
+{% endhighlight %}
+<h3>Метод sort() сортировка массива</h3>
+{% highlight JavaScript %}
+var a = [1, 4, 11, 2, 9, 99, 5];
+
+a.sort();
+document.write(a.join("<p>"));
+
+
+document.write("<hr/>");
+
+
+var s = ["January", "February", "March", "April", "May"];
+
+s.sort();
+document.write(s.join("<p>"));
+{% endhighlight %}
+<h3>Метод push()</h3>
+<p>push() - добавление одного или нескольких элементов в конец и массива возвращает его новую длину. (возвращаемое значение - количество элементов в новом массиве)</p>
+{% highlight JavaScript %}
+var stack = ["January", "February", "March"];
+var lenght = stack.push("April");
+document.write("<p>После добавления: " + stack.join(" "));
+document.write("<p>Размер массива: " + lenght);
+{% endhighlight %}
+<h3>Метод pop()</h3>
+<p>pop() - выполняет удаление последнего элемента массива, уменьшает длину массива. (возвращаемое значение - удаленный элемент массива)</p>
+{% highlight JavaScript %}
+var stack = ["January", "February", "March", "April", "May", "June"];
+document.write("<p>Исходный: " + stack.join(" "));
+document.write("<p>Размер массива: " + stack.length);
+
+document.write("<hr/>");
+
+var lenght = stack.pop();
+document.write("<p>После pop: " + stack.join(" "));
+document.write("<p>Удаленный элемент: " + lenght);
+document.write("<p>Размер массива после удаления: " + stack.length);
+{% endhighlight %}
+<h3>Метод shift()</h3>
+<p>shift() - удаляет и возвращает первый элемент массива смещая все последующие элементы на одну позицию вниз, чтобы занять место, освободившееся в начале массива.</p>
+{% highlight JavaScript %}
+var arr = [1, 2, 3];
+
+document.write("<p>Исходный массив: " + arr.join(" "));
+document.write("<hr/>");
+
+var value = arr.shift();
+
+document.write("<p>Массив после сдвига: " + arr.join(" "));
+document.write("<p>Выдвинутое значение: " + value);
+{% endhighlight %}
+<h3>Метод unshift()</h3>
+<p>unshift() - добавляет элемент в начало массива. Смещает существующие элементы в сторону больших индексов  для освобождения места, добавляет элемент или элементы в начало массива и возвращает новую длину массива.</p>
+{% highlight JavaScript %}
+var arr = [1, 2, 3];
+document.write("<p>Исходный массив: " + arr.join(" "));
+
+document.write("<hr/>");
+
+arr.unshift(0);
+document.write("<p>Массив после сдвига: " + arr.join(" "));
+
+document.write("<hr/>");
+
+arr.unshift(-3, -2, -1);
+document.write("<p>Массив после сдвига: " + arr.join(" "));
+
 {% endhighlight %}

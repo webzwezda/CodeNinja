@@ -1,0 +1,126 @@
+---
+layout: post
+title: "OOP"
+date: 2018-03-10
+category: JavaScript
+description: "Основы ооп в JavaScript"
+---
+<ul class="ankor">
+  <li><a class="link" href="#publpriv">Публичные и приватный</a></li>
+  <li><a class="link" href="#nasl">Наследование</a></li>
+  <li><a class="link" href="#polif">Полиморфизм</a></li>
+  </ul>
+<p>фреймворк mootools</p>
+  <h3 id="publpriv">Инкапсуляция</h3>
+
+{% highlight JavaScript %}
+
+var MyClass = function () {
+
+    // закрытый метод
+    var privateMethod = function () {
+                document.write("Закрытый метод");
+    };
+
+    // открытый метод
+    this.publicMethod = function () {
+        document.write("Открытый метод <br />");
+        privateMethod();
+    };
+
+};
+var obj = new MyClass();
+obj.publicMethod();
+
+//obj.privateMethod(); // ошибка
+{% endhighlight %}
+<h3 id="nasl">Наследование</h3>
+<p>Насле́дование — механизм объектно-ориентированного программирования (наряду с инкапсуляцией, полиморфизмом и абстракцией), позволяющий описать
+    новый класс на основе уже существующего (родительского), при этом свойства и функциональность родительского класса заимствуются новым классом.</p>
+<p>Другими словами, класс-наследник реализует спецификацию уже существующего класса (базовый класс). Это позволяет обращаться с объектами
+    класса-наследника точно так же, как с объектами базового класса.</p>
+{% highlight JavaScript %}
+// Наследование
+
+// базовая функция-конструктор
+function Human(name) {
+    this.name = name;
+    this.talk = function () { document.write("Hello My Name is " + this.name + "<br />") }
+}
+
+// производная функция конструктор
+function Student(name) {
+    this.name = name;
+    this.school = "CBS school";
+}
+
+function Worker(name) {
+    this.name = name;
+    this.speciality = "Software developer";
+}
+
+// Создаем экземпляр родителя
+var human = new Human("name");
+//human.talk();
+
+// наследуем Student и Worker от Human устанавливая функцию как прототип.
+Student.prototype = human;
+Worker.prototype = human;
+
+var Alex = new Student("Alexander");
+var Andrew = new Worker("Andrew");
+
+document.write("<br />Student<br />");
+
+Alex.talk();
+document.write(Alex.school);
+
+document.write("<br />Worker<br />");
+
+Andrew.talk();
+document.write(Andrew.speciality);
+
+{% endhighlight %}
+<h3 id="polif">Полиморфизм</h3>
+<p>Полиморфи́зм (в языках программирования) — возможность объектов с одинаковой спецификацией иметь различную реализацию.</p>
+{% highlight JavaScript %}
+function Human(name) {
+    this.name = name;
+    this.talk = function () { document.write("Hello My Name is " + this.name + "<br />") }
+}
+
+// производная функция конструктор
+function Student(name) {
+    this.name = name;
+    this.school = "CBS school";
+}
+
+function Worker(name) {
+    this.name = name;
+    this.speciality = "Software developer";
+
+    // переопределение метода из базовой функции-конструктора (override).
+    this.talk = function () { document.write("Привет мое имя " + this.name + "<br />") }
+}
+
+// Создаем экземпляр родителя
+var human = new Human("name");
+//human.talk();
+
+// наследуем Student и Worker от Human устанавливая функцию как прототип.
+Student.prototype = human;
+Worker.prototype = human;
+
+var Alex = new Student("Alexander");
+var Andrew = new Worker("Andrew");
+
+document.write("<br />Student<br />");
+
+Alex.talk();
+document.write(Alex.school);
+
+document.write("<br />Worker<br />");
+
+Andrew.talk();
+document.write(Andrew.speciality);
+{% endhighlight %}

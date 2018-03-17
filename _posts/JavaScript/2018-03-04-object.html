@@ -1,0 +1,338 @@
+---
+layout: post
+title: "Объекты"
+date: 2018-03-04
+category: JavaScript
+description: "Основы объектов в JavaScript"
+---
+<ul class="ankor">
+  <li><a class="link" href="#metod">Методы объкта</a></li>
+</ul>
+<p>К объектам можно обращаться как и к массивам.</p>
+{% highlight JavaScript %}
+var instance = { propertyA: 222, propertyB: 444 };
+
+// Присвоение новых значений свойствам.
+instance.propertyA = 333;       // 1 способ.
+instance["propertyB"] = 555;    // 2 способ.
+{% endhighlight %}
+<p>Свойства объекта будут создаваться автоматически при первом обращении по имени будущего свойства и присвоения ему значения.</p>
+{% highlight JavaScript %}
+var point = new Object();
+
+point.x = 10;
+
+point.y = 15;
+
+// Добавляем к объекту метод.
+point.f = function () {
+    document.write("<p>x = " + point.x + "<p>y = " + point.y);
+};
+{% endhighlight %}
+<h3>Синтаксис</h3>
+{% highlight JavaScript %}
+//Вариант 1
+var human = {
+    firstName: "Alex",
+    secondName: "Jazun",
+    age: 27,
+
+    // Вложенный обьект.
+    occupation: {
+        company: "Microsoft",
+        position: "Web Developer"
+    }
+};
+//Вариант 2
+var human = new Object();
+
+human.firstName = "Alex";
+human.secondName = "Jazun";
+human.age = 27;
+
+// Создание вложенного обьекта.
+human.occupation = new Object();
+
+human.occupation.company = "Microsoft";
+human.occupation.position = "Web Developer";
+{% endhighlight %}
+<h3>this</h3>
+{% highlight JavaScript %}
+var human = {
+    firstName: "Alex",
+    secondName: "Jazun",
+    age: 27,
+    occupation: "<img src='Images/Microsoft.jpg' width='152' height='38'/>",
+
+    // Метод show() в блоке инициализации обьекта.
+    show: function () {
+        document.write("<p>First name: " + this.firstName);
+        document.write("<p>Second name: " + this.secondName);
+        document.write("<p>Age: " + this.age + " years old<br/>");
+        document.write(this.occupation + "<hr/>");
+    },
+
+    // Создаем метод SayGoodbye() в блоке инициализации обьекта
+    changeWork: function (occupation) {
+        this.occupation = occupation;
+    }
+}
+{% endhighlight %}
+<h3>For in</h3>
+<p>Циклическая конструкция for in, используется для перебора элементов массива или перебора свойств объекта.</p>
+{% highlight JavaScript %}
+var house = {
+    roof: "<img src='Images/Roof.gif'/><br/>",
+    secondFloor: "<img src='Images/SecondFloor.gif'/><br/>",
+    firstFloor: "<img src='Images/FirstFloor.gif'/><br/>",
+    basement: "<img src='Images/Basement.gif'/><br/>",
+    address: "<p style='color:green'>UK. London. Muswell Hill. N10<hr/>"
+
+}
+
+// Перебор значений свойств в обьекте - house
+for (var element in house) {
+    document.write(house[element]);
+}
+{% endhighlight %}
+<h3>Удаление свойства</h3>
+{% highlight JavaScript %}
+var house = {
+    roof: "<img src='Images/Roof.gif'/><br/>",
+    secondFloor: "<img src='Images/SecondFloor.gif'/><br/>",
+    firstFloor: "<img src='Images/FirstFloor.gif'/><br/>",
+    basement: "<img src='Images/Basement.gif'/><br/>",
+    address: "<p style='color:green'>UK. London. Muswell Hill. N10<hr/>"
+}
+
+// Строительство дома.
+
+if ("secondFloor" in house) {
+    // Удаление свойства secondFloor из объекта house.
+    delete house.secondFloor;
+}
+
+for (element in house) {
+    document.write(house[element]);
+}
+{% endhighlight %}
+<h3 id="metod">Методы объекта</h3>
+<p>По умолчанию вызывается метод valueOf, если он не определен сработает toString()</p>
+{% highlight JavaScript %}
+function Rectangle(w, h) {
+    this.width = w;
+    this.height = h;
+}
+
+Rectangle.prototype.getArea = function () {
+    return this.width * this.height;
+}
+
+// переопределение метода toString из Object
+Rectangle.prototype.toString = function () {
+    return "Прямоугольник W:" + this.width + " H:" + this.height;
+}
+
+// переопределение метода valueOf из Object
+Rectangle.prototype.valueOf = function () {
+    return this.getArea();
+}
+
+var rect1 = new Rectangle(100, 200);
+var rect2 = new Rectangle(400, 300);
+
+// по умолчанию вызывается метод valueOf()
+document.write(rect1 + "<br />");
+document.write(rect2.toString() + "<br />");
+
+document.write("<br />values<br />");
+
+document.write(rect1.valueOf() + "<br />");
+document.write(rect2.valueOf() + "<br />");
+document.write(rect2 + rect1);
+
+{% endhighlight %}
+<h3>Проверка существования свойства</h3>
+<p>Конструкция if(имя_свойства in объект) - используется для проверки наличия свойства у объекта.</p>
+{% highlight JavaScript %}
+//Вариант 1
+var house = {
+    roof: "Крыша<br/>",
+    // thirdFloor: отсутствует.
+    secondFloor: "Второй этаж<br/>",
+}
+
+document.write(house.roof);
+
+if ("thirdFloor" in house) {
+    document.write(house["thirdFloor"]);
+}
+else {
+    document.write(house["secondFloor"]);// или house.secondFloor
+}
+{% endhighlight %}
+<h4>hasOwnProperty</h4>
+<p>Возвращает логическое значение.</p>
+{% highlight JavaScript %}
+function Rectangle(w, h) {
+    this.width = w;
+    this.height = h;
+}
+
+Rectangle.prototype.getArea = function () {
+    return this.width * this.height;
+}
+
+Rectangle.prototype.name = "RECTANGLE";
+
+var rect1 = new Rectangle(100, 200);
+
+
+// hasOwnProperty метод из Object с его помощью можно
+//проверить существует ли свойство у конкретнобъекта не проверяя наличие свойств у прототипа.
+document.write("hasOwnProperty('width') " + rect1.hasOwnProperty("width") + "<br />");
+document.write("hasOwnProperty('name') " + rect1.hasOwnProperty("name") + "<br />");
+
+// с помощью ключевого слова in можно проверить наличие свойства у объекта включая свойспрототипов.
+document.write("'width' in rect1 " + ("width" in rect1) + "<br />");
+document.write("'name' in rect1 " + ("name" in rect1) + "<br />");
+{% endhighlight %}
+<h3>Сравнение</h3>
+<p>Проверка равентства в объектах</p>
+{% highlight JavaScript %}
+function Rectangle(w, h) {
+    this.width = w;
+    this.height = h;
+}
+
+Rectangle.prototype.getArea = function () {
+    return this.width * this.height;
+}
+
+// переопределение метода toString из Object
+Rectangle.prototype.toString = function () {
+    return "Прямоугольник W:" + this.width + " H:" + this.height;
+}
+
+// переопределение метода valueOf из Object
+Rectangle.prototype.valueOf = function () {
+    return this.getArea();
+}
+
+// метод для проверки равенства объектов
+Rectangle.prototype.equals = function (otherObj) {
+    if (this.width === otherObj.width && this.height === otherObj.height) {
+        return true;
+    }
+    return false;
+}
+
+// объекты имеют одинаковые значения.
+var rect1 = new Rectangle(100, 200);
+var rect2 = new Rectangle(100, 200);
+
+// проверка равенства объектов с помощью метода equals
+var res = rect1.equals(rect2);
+document.write("rect1 == rect2 -> " + res);
+
+var rect3 = rect1; // rect1 и rect3 ссылки на один и тот же объект в памяти
+res = rect3 == rect1;
+document.write("<br /><br />rect3 == rect2 -> " + res);
+{% endhighlight %}
+<h4>Сравнение вариант 2</h4>
+{% highlight JavaScript %}
+function Rectangle(w, h) {
+    this.width = w;
+    this.height = h;
+}
+
+Rectangle.prototype.getArea = function () {
+    return this.width * this.height;
+}
+
+// переопределение метода toString из Object
+Rectangle.prototype.toString = function () {
+    return "Прямоугольник W:" + this.width + " H:" + this.height;
+}
+
+// переопределение метода valueOf из Object
+Rectangle.prototype.valueOf = function () {
+    return this.getArea();
+}
+
+// метод для проверки равенства объектов
+Rectangle.prototype.equals = function (that) {
+    if (this.width === that.width && this.height === that.height) {
+        return true;
+    }
+    return false;
+}
+
+// Метод для сравнения объеков.
+// Если текущий объект больше чем тот который передан в параметры
+// - возвращаем значение > 0
+// Если текущий объект меньше чем тот который передан в параметры
+// - возвращаем значение < 0
+// Если объекты равны возвращаем 0
+Rectangle.prototype.compareTo = function (otherObject) {
+    if (this.getArea() > otherObject.getArea()) {
+        return 1;
+    }
+    else if (this.getArea() < otherObject.getArea()) {
+        return -1;
+    }
+    else {
+        return 0;
+    }
+    // или таким способом
+    return this.getArea() - otherObject.getArea();
+}
+
+// объекты имеют одинаковые значения.
+var rect1 = new Rectangle(1000, 20);
+var rect2 = new Rectangle(1000, 20);
+
+// при наличии метода valueOf(), который возвращает простое значение операторы сравнения буиспользовать это значение для
+// определения какой объект больше, а какой меньше
+// если реализация метода valueOf() не возможна, то в таком случае, рекомендуется реализовать метcompareTo(a)
+if (rect1 > rect2) {
+    document.write("Объкет rect1 > rect2<br />");
+}
+if (rect1 < rect2) {
+    document.write("Объкет rect1 < rect2<br />");
+}
+if (rect1 <= rect2) {
+    document.write("Объкет rect1 <= rect2<br />");
+}
+if (rect1 >= rect2) {
+    document.write("Объкет rect1 >= rect2<br />");
+}
+if (rect1 == rect2) {
+    document.write("Объкет rect1 == rect2<br />");
+}
+if (rect1 != rect2) {
+    document.write("Объкет rect1 != rect2<br />");
+}
+
+document.write("<br/><br/>использование compareTo()<br/><br/>");
+
+if (rect1.compareTo(rect2) > 0)/*rect1 > rect2*/ {
+    document.write("Объкет rect1 > rect2<br />");
+}
+if (rect1.compareTo(rect2) < 0)/*rect1 < rect2*/ {
+    document.write("Объкет rect1 < rect2<br />");
+}
+if (rect1.compareTo(rect2) <= 0)/*rect1 <= rect2*/ {
+    document.write("Объкет rect1 <= rect2<br />");
+}
+if (rect1.compareTo(rect2) >= 0)/*rect1 >= rect2*/ {
+    document.write("Объкет rect1 >= rect2<br />");
+}
+if (rect1.compareTo(rect2) == 0)/*rect1 == rect2*/ {
+    document.write("Объкет rect1 == rect2<br />");
+}
+if (rect1.compareTo(rect2) != 0)/*rect1 != rect2*/ {
+    document.write("Объкет rect1 != rect2<br />");
+}
+
+{% endhighlight %}

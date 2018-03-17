@@ -1,0 +1,65 @@
+---
+layout: post
+title: "Преобразование типов "
+date: 2018-03-01
+category: JavaScript
+description: "Преобразование типов данных в JavaScript"
+---
+<ul class="ankor">
+  <li><a class="link" href="#str">Строка</a></li>
+  <li><a class="link" href="#numbr">Число</a></li>
+  <li><a class="link" href="#logic">Логическое</a></li>
+  </ul>
+<h3 id="str">Строка</h3>
+{% highlight JavaScript %}
+//проверка типа данных
+var a = true;
+var b;
+
+document.write("String" + b + "<br />");
+document.write(String(a) + " " + b + "<br />");
+document.write(a.toString("aa") + " " + b + "<br />");
+document.write(typeof a.toString() + "<br />");
+document.write(String(null) + "<br />");
+{% endhighlight %}
+<h3 id="numbr">Число</h3>
+<p>Пирсвоение типа данных знаком "+" самое простое.</p>
+{% highlight JavaScript %}
+var x = prompt("Input x value ", "0"); // х - будет строкового типа
+var y = prompt("Input y value ", "0"); // y - будет строкового типа
+// parseInt() конвертация в целочисленное значение.
+var integerX = parseInt(x);
+var number = +"2048";
+var num = Number("4096");
+var num1 = Number(undefined);
+var num2 = Number(true);
+var num3 = Number(null);
+
+document.write(number + "<br />");
+document.write(num + "<br />");
+document.write(num1 + "<br />");
+document.write(num2 + "<br />");
+document.write(num3 + "<br />");
+{% endhighlight %}
+<h3 id="logic">Логическое</h3>
+{% highlight JavaScript %}
+var obj = {};
+
+var bool1 = Boolean(undefined);
+var bool2 = Boolean(null);
+var bool3 = Boolean(NaN);
+var bool4 = Boolean(0);
+var bool5 = Boolean(67);
+var bool6 = Boolean("");
+var bool7 = Boolean("45");
+var bool8 = Boolean(obj);
+
+document.write(bool1 + "<br />");
+document.write(bool2 + "<br />");
+document.write(bool3 + "<br />");
+document.write(bool4 + "<br />");
+document.write(bool5 + "<br />");
+document.write(bool6 + "<br />");
+document.write(bool7 + "<br />");
+document.write(bool8 + "<br />");
+{% endhighlight %}

@@ -5,95 +5,132 @@ date: 2018-03-01
 category: JavaScript
 description: "Основы функций в JavaScript"
 ---
-<p>Именна функций даются в стиле UpperCamelCase.</p>
 <ul class="ankor">
   <li><a class="link" href="#while">While</a></li>
-  <li><a class="link" href="#Do_While">Do While</a></li>
-  <li><a class="link" href="#Diecs">Цикл Дейкстры.</a></li>
 </ul>
-<h2 id="while">While</h2>
-<p>Цикл while - выполняется до тех пор, пока условие удовлетворяет истиности.</p>
+<p>Именна функций даются в стиле UpperCamelCase.</p>
+<p>Функция - это блок кода, который можно многократно вызывать на исполнение. При этом функции можно передавать аргументы (параметры) с которыми она будет работать. Аргументы они же - параметры играют роль локальных переменных в теле функции.</p>
+<h3>Необязательные аргументы</h3>
 {% highlight JavaScript %}
-var str = "Угадайте задуманный цвет с пяти попыток.";
+function print(msg, count) {
+  // Необязательный параметр count.
 
-var maxAttempt = 5;   // Допустимое количество попыток.
-var attempt = 0;      // Счетчик попыток.
-var color = "red";    // Задуманный цвет.
-
-while (attempt < maxAttempt) {
-    attempt++;
-
-    value = prompt(str + " Попытка " + attempt, "");
-
-    if (value == null) {
-        break;
+    if (count == undefined) {
+        count = 3;
     }
 
-    if (value != color) {
-        str = "Вы не угадали.";
-        continue;
+    for (var i = 0; i < count; i++) {
+        document.write("<p>" + msg);
     }
 
-    document.write("<p>Поздравляем, Вы угадали с " + attempt + " попытки!");
-    break;
+    document.write("<hr/>");
 }
 
-document.write("<p>Конец игры!");
+
+// Вызов функций.
+
+print("hello");
+print("world", 7);
 {% endhighlight %}
-<h3 id="Do_While">Циклическая конструкция Do While</h3>
-<p>Цикл с постустловием do-while - это цикл, в котором условие проверяется после выполнение тела цикла. Тело цикла выполняется хотя бы раз.</p>
+<h3>Оператор return</h3>
+<p>После оператора return функция останавливается и возвращает значение.</p>
 {% highlight JavaScript %}
-var input;
+function Sum(a, b) {
 
-do {
-    input = prompt("Введите некоторое значение.");
-    document.write("<p>" + input);
+    alert('Hello!'); // return прерывает выполнение кода
+    return a + b;
 }
-while (input != null);
+
+var res = Sum(2, 3);
+
+document.write(res);
 {% endhighlight %}
-<h3 id="Diecs">Цикл Дейкстры.</h3>
-<p>При выполнении цикла Дейкстры в каждой итерации происходит вычисление охраняемых условий.</p>
-<p>Цикл Дейкстры с одним охраняющим условием и одной охраняемой командой представляет собой, по сути, обычный цикл с предусловием (цикл «while»).</p>
+<h3>Массив аргументов функции</h3>
 {% highlight JavaScript %}
-var a;
+function max(a, b, c) {
+//функция показывает максимальное значение аргумента, котороый передан при вызове
 
-for (; ;) {
+    var maxValue = Number.NEGATIVE_INFINITY;//присваеваем изначально минус бесконечность
+    document.write("<p>Number.NEGATIVE_INFINITY = " + maxValue + "<hr/>");
+    //перебираем циклом аргументы
+    // arguments - свойство объекта max - который ефункцией
+    for (var i = 0; i < arguments.length; i++)
+        if (arguments[i] > maxValue)
+            maxValue = arguments[i];
 
-    a = prompt("Введите направление l/r/t/b");
-
-    switch (a) {
-        case 'l': // 'l' - охраняющее условие 1.
-            {
-                document.write("на лево <br />");    // охраняемая команда.
-                continue;
-            }
-        case 'r': // 'r' - охраняющее условие 2.
-            {
-                document.write("на право <br />");   // охраняемая команда.
-                continue;
-            }
-        case 't': // 'l' - охраняющее условие 1.
-            {
-                document.write("вверх <br />");    // охраняемая команда.
-                continue;
-            }
-        case 'b': // 'r' - охраняющее условие 2.
-            {
-                document.write("вниз <br />");   // охраняемая команда.
-                continue;
-            }
-        default:
-            {
-                exit = confirm("Выйти?");
-                if (exit) {
-                    document.write("Вы завершили выполнение.");
-                    break;
-                }
-                else {
-                    continue;
-                }
-            }
-    }
-    break;  // Прерывание цикла.
+    return maxValue;
 }
+
+var res = max(-33, 33, 777, -666, -22, 888);
+
+document.write("<p>Максимальное значение одного из аргументов функции = " + res);
+{% endhighlight %}
+<h3>Колличество аргументов функции</h3>
+<p>Функция, которая проверяет правильное ли количество аргументов передано. При вызове функции создается специальный масив содержащий в себе аргументы, которые были переданы при вызове. У этого массива есть свойство length, в котором хранится количество аргументов переданых функции.</p>
+{% highlight JavaScript %}
+function f(x, y, z) {
+
+// Проверка, правильное ли количество аргументов передано.
+if (arguments.length != 3) {
+    document.write("<p><b style='color:red;'>ERROR:</b>
+      <em>Требуется три аргумента при вызове Функция вызвана с "
+        + arguments.length + параметрами!</em>");
+}
+else {
+    document.write("<p><b style='color:green;'> Правильный вызов функции.</b> Аргументы: ");
+
+    for (var i = 0; i < arguments.length; i++)
+        document.write(arguments[i] + ", ");
+    }
+}
+
+f(1, 2, 3, 4);   // Более трех аргументов - ошибка!
+f(1, 2, 3);
+f(1, 2)          // Менее трех аргументов - ошибка!
+{% endhighlight %}
+<h3>Рекурсия</h3>
+<p></p>
+{% highlight JavaScript %}
+function f(counter) {//функция принимает параметр counter
+
+    counter--;//уменшается параметр на 1
+
+    document.write("<p style='background-color:lightblue;'>Первая половина метода: " + counter);
+
+    if (counter != 0)//проводим проверку если counter не равен 0
+        f(counter);//вызываем функцию заново и уменьшаем counter еще раз
+    //после того, как условие не выполняется выводится следующее сообщение
+    document.write("<p style='background-color:yellow;'>Вторая половина метода: " + counter);
+}
+
+f(3);
+{% endhighlight %}
+<h3>CallBack Function</h3>
+{% highlight JavaScript %}
+var add = function (a, b) {//переменная с функцией
+    return a + b;           //выполняет сложение
+};
+
+var sub = function (a, b) {//переменная с функцией
+    return a - b;           //выполняет вычитание
+};
+
+
+
+function show(callBackFunction, a, b) {
+/*callBackFunction - обозначает,
+что при вызове функции show
+должны передать еще одну функцию, CallBack функцию.
+Функция show сама решит, когда нузапустить CallBack Function*/
+
+    var result = callBackFunction(a, b);
+    document.write("<p>" + result);
+
+};
+
+
+show(add, 10, 20);//если передать в callBackFunction функцию add
+
+show(sub, 50, 30);//если передать в callBackFunction функцию sub
+
 {% endhighlight %}

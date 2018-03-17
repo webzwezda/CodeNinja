@@ -8,8 +8,35 @@ permalink: /javascript/
 <ul class="ankor">
   <li><a class="link" href="#varible">Переменные</a></li>
   <li><a class="link" href="#methods">Methods</a></li>
+  <li><a class="link" href="#prim">Пространство имен</a></li>
 </ul>
+<h3>Атребуты тега script</h3>
+<p>То есть, в таком коде (с async) первым сработает тот скрипт, который раньше загрузится:</p>
+{% highlight JavaScript %}
+<script src="1.js" async></script>
+<script src="2.js" async></script>
+{% endhighlight %}
+{% highlight javascript %}
+<input type="button" value="Кнопка" onclick="alert('Hello')" />
 
+<br />
+
+<!--Как тело URL адреса--------------------------------------------------------->
+<a href="javascript:alert('Hello')">Ссылка</a>
+{% endhighlight %}
+<p>А в таком коде (с defer) первым сработает всегда 1.js, а скрипт 2.js, даже если загрузился раньше, будет его ждать.</p>
+{% highlight JavaScript %}
+<script src="1.js" defer></script>
+<script src="2.js" defer></script>
+{% endhighlight %}
+<p>Поэтому атрибут defer используют в тех случаях, когда второй скрипт 2.js зависит от первого 1.js, к примеру – использует что-то, описанное первым скриптом.</p>
+<p>Второе отличие – скрипт с defer сработает, когда весь HTML-документ будет обработан браузером.</p>
+{% highlight JavaScript %}
+<script src="async.js" async></script>
+<script src="defer.js" defer></script>
+{% endhighlight %}
+<p>…То скрипт async.js выполнится, как только загрузится – возможно, до того, как весь документ готов. А defer.js подождёт готовности всего документа.</p>
+<p>Это бывает удобно, когда мы в скрипте хотим работать с документом, и должны быть уверены, что он полностью получен.</p>
 <h3 id="varible">Переменные</h3>
 <p>Переменная без var считается глобальной, имена переменным даются в стиле lowerCamelCase.</p>
 {% highlight javascript %}
@@ -64,4 +91,27 @@ var integerY = parseInt(y);
 result = integerX + integerY;
 document.write(result);
 
+{% endhighlight %}
+<h3 id="prim">Пространство имен</h3>
+<p>Создаем несколько пустых объектов и там определяем переменные. Таким образом переменные из разных именн не смогут конфликтовать друг с другом.</p>
+{% highlight javascript %}
+// Пустой объект, который будет выполнять функцию протсранства имен.
+// Это единственное глобальное имя, которое будет вмещать все остальные имена.
+// Правило: имя модуля должно быть связано с именем файла
+var Module1 = {};
+
+Module1.name = "MODULE 1";
+
+Module1.startModule1 = function () {
+    document.write(Module1.name + "<br />");
+}
+
+{% endhighlight %}
+<p>Самозапускающиеся функция к которой мы не можем обратиться но она запускается и что то там делает.</p>
+<p>В нутри любой функции создаются только локальные переменные.</p>
+{% highlight javascript %}
+(function () {// Определяем анонимную функцию.
+    var message = "Hello from module3"; //  переменная не глобальная
+    alert(message);
+})();
 {% endhighlight %}
