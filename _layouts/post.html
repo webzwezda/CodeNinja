@@ -3,24 +3,33 @@ layout: default
 ---
 <h1 class="page__title">{{page.title}}</h1>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     {{ content }}
+
+  <div class="paginatePost--category">
+    {% if page.categories %}
+      {% assign category = page.categories[0] %}
+      {% assign posts = site.categories[category] %}
+      {% for post in posts %}
+        {% if post.url == page.url %}
+          {% assign post_index0 = forloop.index0 %}
+          {% assign post_index1 = forloop.index %}
+        {% endif %}
+      {% endfor %}
+      {% for post in posts %}
+        {% if post_index0 == forloop.index %}
+          {% assign next_post = post %}
+        {% endif %}
+        {% if post_index1 == forloop.index0 %}
+          {% assign prev_post = post %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    {% if prev_post %}
+        <a class="paginatePost__prev" rel="prev"
+         href="{{ prev_post.url | prepend: site.baseurl | prepend: site.url }}">Назад</a>
+    {% endif %}
+    {% if next_post %}
+        <a class="paginatePost__next" rel="next"
+         href="{{ next_post.url | prepend: site.baseurl | prepend: site.url }}">Вперед</a>
+    {% endif %}
+    </div>

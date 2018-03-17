@@ -28,7 +28,7 @@ and (orientation : portrait) {
       overflow-x:  hidden;
     }
     #logo {
-      display: block;
+      display: none;
       padding: 0;
       width: 100%;
       text-align: center;
@@ -168,6 +168,20 @@ and (orientation : portrait) {
 }
 .menu__left--wrap{
   margin: 2rem 0;
+}
+//Font
+p{
+  font-size: 1rem;
+  line-height: 16px;
+}
+.post__readmore {
+    float: right;
+    padding: 0.3rem;
+    background-color: #eee;
+    font-family: "Courier New";
+    font-size: 1rem;
+    text-decoration: none;
+    color: #424242;
 }
   }
 

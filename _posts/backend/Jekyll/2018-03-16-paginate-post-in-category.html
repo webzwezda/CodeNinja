@@ -3,33 +3,41 @@ layout: post
 title:  "Пагинация страниц внутри поста"
 date:   2018-03-16
 category: Jekyll
-description: "На сайте есть 15 постов, они поделены на три категории. При просмотре поста есть кнопке направляющая нас на следующий пост той категории страницы на которой мы сейчас находимся."
+description: "Реализация перехода между постами в одной категории при использовании Jekyll"
 ---
-{% highlight css %}
+<p><abr class="abr" title="Генератор статических страниц">Jekyll</abr> дает нам из коробки <abr class="abr" title="Шаблонизатор">Liquid</abr> благодаря которому мы и организуем переключение записей по категории внутри поста.</p>
+<p>Да то что написано выше не очень понятно. Постараюсь разъяснить о чем идет речь.</p>
+<p>На сайте есть 15 постов и они поделены между собой на три категории. К примеру пять крассных постов, пять синих и пять желтых. Находясь внутри одного из красных постов у нас есть кнопки перехода к следующему красному посту или к предыдущему красному посту.</p>
+{% highlight liquid %}
+{% raw %}
+
 <div class="paginatePost--category">
-        {% if page.categories %}
-              {% assign category = page.categories[0] %}
-              {% assign posts = site.categories[category] %}
-              {% for post in posts %}
-                {% if post.url == page.url %}
-                  {% assign post_index0 = forloop.index0 %}
-                  {% assign post_index1 = forloop.index %}
-                {% endif %}
-              {% endfor %}
-              {% for post in posts %}
-                {% if post_index0 == forloop.index %}
-                  {% assign next_post = post %}
-                {% endif %}
-                {% if post_index1 == forloop.index0 %}
-                  {% assign prev_post = post %}
-                {% endif %}
-              {% endfor %}
-            {% endif %}
-            {% if prev_post %}
-                <a class="prev" rel="prev" href="{{ prev_post.url }}">&#x2039;</a>
-            {% endif %}
-            {% if next_post %}
-                <a class="next" rel="next" href="{{ next_post.url }}">&#x203A;</a>
-            {% endif %}
+{% if page.categories %}
+  {% assign category = page.categories[0] %}
+  {% assign posts = site.categories[category] %}
+  {% for post in posts %}
+    {% if post.url == page.url %}
+      {% assign post_index0 = forloop.index0 %}
+      {% assign post_index1 = forloop.index %}
+    {% endif %}
+  {% endfor %}
+  {% for post in posts %}
+    {% if post_index0 == forloop.index %}
+      {% assign next_post = post %}
+    {% endif %}
+    {% if post_index1 == forloop.index0 %}
+      {% assign prev_post = post %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if prev_post %}
+    <a class="prev" rel="prev"
+     href="{{ prev_post.url | prepend: site.baseurl | prepend: site.url }}">Назад</a>
+{% endif %}
+{% if next_post %}
+    <a class="next" rel="next"
+     href="{{ next_post.url | prepend: site.baseurl | prepend: site.url }}">Вперед</a>
+{% endif %}
 </div>
+{% endraw %}
 {% endhighlight %}

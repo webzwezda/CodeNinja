@@ -38,39 +38,7 @@ strong, b {
 header {
   flex: 0 0 auto;
 }
-$FontTitleFamily: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-@mixin textStyleTitle ($FontTitleMargin, $FontTitleSize, $FontHeight: 3rem ){
-  margin:  $FontTitleMargin;
-  font-size: $FontTitleSize;
-  font-family: $FontTitleFamily;
-  line-height: $FontHeight;
-}
-.page__title,
-.post__title {
-  @include textStyleTitle( 1.5rem 0, 2rem ) ;
-  text-align: center;
-}
-.menu__left__title {
-  @include textStyleTitle( 1.5rem 4%, 1.8rem ) ;
-  font-weight: lighter;
-}
 
-h2 {
-  font-family: $FontTitleFamily;
-}
-
-h3 {
-  font-family: $FontTitleFamily;
-  font-size: 1.3rem;
-  margin: 0.6rem 0;
-}
-p {
-  font-size: .9rem;
-  line-height: 25px;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  margin: 0.3rem 0;
-
-}
 
 .main {
   margin: 0 4%;
