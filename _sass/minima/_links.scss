@@ -54,23 +54,3 @@ a{
   @include link($LinkMargin: null, $LinkTextStyle_1...);
 }
 }
-.left__nav__link {
-  display: inline-block;
-  margin: .3rem 0;
-  text-decoration: none;
-  font-family: "Georgia";
-  color: #333333;
-
-  &:first-child{
-    margin: 0 0 .3rem 0;
-  }
-
-  &:hover {
-    color: #000;
-  }
-
-  &:active {
-    text-decoration: underline;
-  }
-
-}

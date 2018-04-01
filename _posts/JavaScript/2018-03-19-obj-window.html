@@ -1,0 +1,190 @@
+---
+layout: post
+title: "Объект window"
+date: 2018-03-19
+category: JavaScript
+description: "Window и его свойства"
+---
+<ul class="ankor">
+  <li><a class="link" href="#ostr">Отложенный запуск</a></li>
+  <li><a class="link" href="#location">Location</a></li>
+  <li><a class="link" href="#rzpl">Размер окна</a></li>
+  <li><a class="link" href="#rzek">Размер экрана</a></li>
+  <li><a class="link" href="#newwin">Новое окно</a></li>
+</ul>
+<h3 id="ostr">Запуск функции один раз</h3>
+<p><b>setTimeout()</b> - планирует один запуск указанной функции через определенное количество миллисекунд</p>
+<p><b>clearTimeout()</b> - отменяет отложенный запуск setTimeout().</p>
+{% highlight JavaScript %}
+var timer;
+
+window.onload = function () {
+    timer = window.setTimeout(showMessage, 5000);
+}
+
+function showMessage() {
+    alert("Hello world");
+}
+
+function cancel() {
+    clearTimeout(timer);
+}
+
+<p>Сообщение будет отображено через 5 секунд</p>
+<a href="javascript:cancel()">Отмена</a>
+}
+{% endhighlight %}
+<h3 id="ostr">Запуск функции через определенное время</h3>
+<p><b>setInterval()</b> - планирование запуска указанной функции с заданным интервалом. Планирование и запуск будут происходить многократно.</p>
+<p><b>clearInterval()</b> - останавливает setInterval().</p>
+{% highlight JavaScript %}
+window.onload = function () {
+    var counter = 0;
+    var intervalHandler;
+
+    function count(){
+        get("output").innerHTML = counter;
+        counter++;
+    }
+
+    get("startButton").onclick = function () {
+        intervalHandler = setInterval(count, 5);
+    }
+
+    get("stopButton").onclick = function () {
+        // останавливаем таймер, по которому вызывается функция count
+        clearInterval(intervalHandler);
+    }
+}
+
+// пользовательская функция для получения элементов страницы по id
+var get = function (id){
+    return document.getElementById(id);
+}
+
+  <p id="output">-</p>
+  <input id="startButton" type="button" value="Start" />
+  <input id="stopButton" type="button" value="Stop" />
+{% endhighlight %}
+<h3 id="location">Location</h3>
+{% highlight JavaScript %}
+// location - URL адрес текущего документа.
+// весь url
+document.write("location = " + document.location + "<br />");
+// протокол
+document.write("protocol  = " + document.location.protocol + "<br />");
+// имя хоста
+document.write("host  = " + document.location.host + "<br />");
+// путь к запрашиваемому ресурсу
+document.write("pathname  = " + document.location.pathname + "<br />");
+// строка запроса (после знака вопроса)
+document.write("search  = " + document.location.search + "<br />");
+
+// location - http://edu.cbsystematics.com/info.aspx?id=10
+// protocol - http:
+// host - edu.cbsystematics.com
+// pathname - /info.aspx
+// search - ?id=10
+{% endhighlight %}
+<h3 id="location">Парсинг url</h3>
+<p>Парсинг строки с добавление свойств и значений в объект.</p>
+{% highlight JavaScript %}
+// Функция для чтения данных, которые переданы при GET запросе (в адресной строке).
+function getQueryString() {
+
+    var args = {};                                  // пустой объект
+    // login=admin password=123
+    var query = location.search.substring(1);       // Получение строки запроса.
+    var pairs = query.split("&");                   // Разделение строки по амперсанду
+
+    for (var i = 0; i < pairs.length; i++) {
+
+        var pos = pairs[i].indexOf('=');            // Проверка пары "name=value"
+        if (pos == -1) {                            // Если не найдено - пропустить
+            continue;
+        }
+
+        var argname = pairs[i].substring(0, pos);   // Получение имени
+        var value = pairs[i].substring(pos + 1);    // Получение значения
+
+        args[argname] = value;                      // Сохранение как свойства
+
+    }
+
+    return args;
+}
+
+// Для теста примера перейдите по URL текущей страницы + ?login=admin&password=123
+function print() {
+    var args = getQueryString();
+    var e = document.createElement("p");
+
+    e.innerHTML = "Login " + args.login + "<br />";
+    e.innerHTML += "Password " + args.password;
+
+    document.body.appendChild(e);
+}
+<input type="button" name="name" value="Read Query Parameters" onclick="print()" />
+{% endhighlight %}
+<h3>Перенаправление</h3>
+{% highlight JavaScript %}
+window.onload = function () {
+
+        document.getElementById("go").onclick = function () {
+            document.location = "http://edu.cbsystematics.com/ru/courses";
+        }
+
+    }
+
+<input id="go" type="button" value="edu.cbsystematics.com/ru/courses" />
+{% endhighlight %}
+<h3 id="rzpl">Размер окна</h3>
+{% highlight JavaScript %}
+<script type="text/javascript">
+        var Geometry = {};
+        if (window.innerWidth) {
+            Geometry.getViewportWidth = function () { return window.innerWidth; };
+            Geometry.getViewportHeight = function () { return window.innerHeight; };
+        }
+
+    </script>
+
+    <script type="text/javascript">
+        document.write("Height " + Geometry.getViewportHeight() + "<br />");
+        document.write("Width " + Geometry.getViewportWidth() + "<br />");
+    </script>
+{% endhighlight %}
+<h3 id="rzek">Размер экрана</h3>
+{% highlight JavaScript %}
+<script>
+    window.onload = function () {
+        // определение высоты и ширины экрана пользователя.
+        alert("Width = " + screen.width + "; Height = " + screen.height);
+    }
+</script>
+{% endhighlight %}
+<h3 id="newwin">Новое окно</h3>
+{% highlight JavaScript %}
+<script type="text/javascript">
+    window.onload = function () {
+
+        document.getElementById("openButton").onclick = openButtonHandler;
+        document.getElementById("closeButton").onclick = closeButtonHandler;
+
+        var w;
+
+        function openButtonHandler() {
+            // первый параметр - html страница, которая будет загружена в новом окне.
+            // второй параметр - имя окна
+            // третий параметр - список дополнительных параметров (необязательный)
+            w = window.open("window.html", "Window Name", "width=400,height=400,status=yes,resizable=no");
+        }
+
+        function closeButtonHandler() {
+            w.close();
+        }
+    }
+</script>
+<input type="button" id="openButton" value="Открыть" />
+<input type="button" id="closeButton" value="Закрыть" />
+{% endhighlight %}

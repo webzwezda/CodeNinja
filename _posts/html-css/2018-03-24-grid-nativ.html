@@ -1,0 +1,37 @@
+---
+layout: post
+title: "Шаблон нативных гридов"
+date: 2018-03-24
+category: html-css
+description: "Примеры работы с гридами"
+---
+<h3>Карточки товара</h3>
+{% highlight html %}
+<body>
+<div class="item">
+<img src="http://placehold.it/160x160">
+<h3>NAME</h3>
+<p>Lorem ipsum dolor sit amet.</p>
+</div>
+<div class="item">
+<img src="http://placehold.it/160x160">
+<h3>NAME</h3>
+<p>Lorem ipsum dolor sit amet.</p></div>
+<div class="item">
+<img src="http://placehold.it/160x160">
+<h3>NAME</h3>
+<p>Lorem ipsum dolor sit amet.</p></div>
+</body>
+{% endhighlight %}
+{% highlight css %}
+main{
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(270px , 1fr));
+}
+img{
+  width: 100%;
+}
+{% endhighlight %}
+<h3>Адаптивный шаблон</h3>
+<p>Пример адаптивного шаблона на нативных гридах <a download href="{{ "/files/Grid.rar"  | prepend: site.baseurl | prepend: site.url}}" class="link--2">Скачайте</a></p>

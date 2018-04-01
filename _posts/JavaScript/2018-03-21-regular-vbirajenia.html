@@ -1,0 +1,151 @@
+---
+layout: post
+title: "Регулярные выражения"
+date: 2018-03-19
+category: JavaScript
+description: "Основа работы с регулярными выражениями"
+---
+<ul class="ankor">
+  <li><a class="link" href="#soz">Создание</a></li>
+  <li><a class="link" href="#sind">Символ по индексу</a></li>
+  <li><a class="link" href="#metas">Метасимволы</a></li>
+  <li><a class="link" href="#prim">Примеры</a></li>
+</ul>
+<h3 id="soz">Создание</h3>
+{% highlight JavaScript %}
+// Определение регулярного выражения через литерал
+// / / - два форвард слеша
+var pattern1 = /\d\d\d/;
+
+// Определение регулярного выражения через класс RegExp
+var pattern2 = new RegExp("\d\d\d");
+
+// \d - метасимвол, заменяющий любой числовой символ
+// \d\d\d - соответствует подстроке из трех чисел.
+{% endhighlight %}
+<h3 id="soz">Индекс символа</h3>
+<p><b>search()</b> - возвращает индекс первого найденного символа подстроки по шаблону или -1 если подстрне найдена</p>
+<p>В качестве значения может принемать не только патерн но и строку.</p>
+{% highlight JavaScript %}
+var text = "Строка 123 для тестирования примера.";
+var pattern = /\d\d\d/;
+var firstIndex = text.search(pattern);
+document.write("Подстрока найдена по индексу " + firstIndex);
+{% endhighlight %}
+<h3 id="soz">Поиск с заменой</h3>
+<p><b>replace()</b> - производит операцию поиска с заменой.</p>
+{% highlight JavaScript %}
+var text = "Строка для 123тести456рования при789мера.";
+var pattern = /\d\d\d/g; // g - глобальный поиск - все вхождения, а не только первое.
+var result = text.replace(pattern, "");
+document.write(result);
+{% endhighlight %}
+<h3 id="soz">Возврат массива</h3>
+<p><b>match()</b> - принимает регулярное выражение и возвращает массив с результатами поиска.</p>
+{% highlight JavaScript %}
+var text = "1 плюс 2 равно 3";
+var res = text.match(/\d/g); // возвращает массив ['1', '2', '3']
+document.write(res);
+
+var text2 = "Текст 123 для тестирования примера";
+var res2 = text2.match(/\d\d\d/);
+
+document.write("<br />res2[0] = " + res2[0]);
+{% endhighlight %}
+<h3 id="soz">Разбив строки</h3>
+<p><b>split()</b> - разбивает строку на массив подстрок в соответствии с регулярным выражением.</p>
+{% highlight JavaScript %}
+var text = "test-А123test-B123test-C111test-D567";
+var res = text.split(/\d\d\d/g);
+// возвращает массив ['test-A', 'test-B', 'test-C', 'test-D']
+document.write(res);
+{% endhighlight %}
+<h3 id="soz">Поиск по строке</h3>
+<p>Но всегда возвращает только одно значение или null</p>
+{% highlight JavaScript %}
+var test = "Строка №2 для тестирования 6 примера";
+var pattern = /\d/g;
+
+var res;
+while ((res = pattern.exec(test)) != null) {
+    alert("Найдено " + res + " в позиции "
+    + res.index + ". Следующий поиск начнется с индекса " + pattern.lastIndex);
+}
+{% endhighlight %}
+<h3 id="metas">Метасимволы</h3>
+{% highlight JavaScript %}
+// \w Любой алфавитно-цифровой символ в верхнем и нижнем регистре и символ подчеркивания(тоже самое, что и [a-zA-Z0-9_]).
+// \W Любой символ не являющийся подчеркиванием и не относящийся к алфавитно-цифровым
+// \s любой пробельный символ (тоже самое, что [\r\n\f\v\t])
+// \S Любой не пробельный символ (тоже самое, что [^\r\n\f\v\t])
+// \d любая цифра (digit)
+// \D любой не цифровой символ (тоже самое, что [^0-9])
+
+// \v (вертикальная табуляция)
+// \t (табуляция)
+// \r (перевод каретки)
+// \n (перевод строки)
+// \f (перевод страницы)
+
+// Наборы символов
+// [RrGgBb] - Соответствие указанным символам
+// [a-z] Соответствие символам английского алфавита в нижнем регистре
+// [0-9] Соответствие указанным цифрам
+// [^0-9] Соответствие с чем угодно кроме цифр заданного диапазона
+
+// Квантификатор (Кванторы)
+// + Один или несколько символов
+// * ноль и более символов
+// ? ноль или одно вхождение
+
+// Интервалы
+// {3} точное количество совпадений
+// {2,3} диапазон
+// {3,} не менее
+// {,3}  не более
+
+// Якорные символы
+// ^  Начало строки
+// $  Конец строки
+// \b соответствует границе слова
+
+// Флаги
+// i выполнение поиска не чувствительного к регистру.
+// g выполнение глобального поиска.
+// m многострочный режим.
+{% endhighlight %}
+<h3 id="prim">Примеры</h3>
+{% highlight JavaScript %}
+// 21-12-1999
+var pattern = /\d{1,2}-\d{1,2}-\d{4}/;
+var text = "21-12-1999";
+document.write(text + " -> " + pattern.test(text) + "<br />");
+
+// +38 (063) 223-23-23
+pattern = /\+38 \(\d{3}\) \d{3}-\d{2}-\d{2}/;
+text = "+38 (063) 223-23-23";
+document.write(text + " -> " + pattern.test(text) + "<br />");
+
+// Иванов Иван Иванович
+pattern = /[а-яА-Я]+ [а-яА-Я]+ [а-яА-Я]+/;
+text = "Иванов Иван Иванович";
+document.write(text + " -> " + pattern.test(text) + "<br />");
+
+// ivanov.ivan@example.com
+pattern = /\b[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,4}\b/i;
+text = "ivanov.ivan@example.com";
+document.write(text + " -> " + pattern.test(text) + "<br />");
+
+// hello.html
+pattern = /\w+\.html/;
+text = "hello.html";
+document.write(text + " -> " + pattern.test(text) + "<br />");
+
+// http://www.cbsarea.com или https://www.cbsarea.com
+pattern = /https?:\/\/[\w\d:\.:\?\&]+/g;
+text = "http://www.cbsarea.com или https://www.cbsarea.com blah-blah-blah http://www.google.com:80";
+var res;
+while ((res = pattern.exec(text)) != null) {
+    document.write("Найдено " + res + " по индексу " + res.index + "<br />");
+}
+{% endhighlight %}

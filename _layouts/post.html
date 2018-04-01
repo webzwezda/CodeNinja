@@ -26,10 +26,10 @@ layout: default
     {% endif %}
     {% if prev_post %}
         <a class="paginatePost__prev" rel="prev"
-         href="{{ prev_post.url | prepend: site.baseurl | prepend: site.url }}">Назад</a>
+         href="{{ prev_post.url | prepend: site.baseurl | prepend: site.url }}">&#171; {{prev_post.title}}</a>
     {% endif %}
     {% if next_post %}
         <a class="paginatePost__next" rel="next"
-         href="{{ next_post.url | prepend: site.baseurl | prepend: site.url }}">Вперед</a>
+         href="{{ next_post.url | prepend: site.baseurl | prepend: site.url }}">{{next_post.title}} &#187;</a>
     {% endif %}
     </div>

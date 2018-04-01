@@ -1,11 +1,38 @@
-.paginatePost--category:after {
-  content: '';
-  display: block;
-  clear: both;
+//menu right
+
+.menu__left--wrap {
+  flex: 0 0 28%;
+  order: 2;
+  margin: 2% 0 0 1%;
+  background-color: #fff;
+  padding-bottom: 1rem;
 }
-.paginatePost--category{
-  
+
+.left__nav {
+  margin: 0 4%;
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li{
+        margin: 0.5rem 0;
+    }
+  }
 }
-.paginatePost__next{
-float: right;
+
+.left__nav__link {
+  display: inline-block;
+  text-decoration: none;
+  font-family: "Georgia";
+  color: #333333;
+
+  &:hover {
+    color: #000;
+  }
+
+  &:active {
+    text-decoration: underline;
+  }
 }

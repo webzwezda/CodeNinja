@@ -1,0 +1,101 @@
+---
+layout: post
+title: "Адаптивное меню на чистом Css"
+date: 2018-02-01
+category: How-To-Css
+description: "Создаем выпадающее адаптивное меню на чистом css, наше меню будет юзабельно и на мобильном телефоне."
+---
+<h3>Первый уровень выпадания</h3>
+{% highlight html %}
+<header class="site-header">
+    <nav class="header">
+      <div id="logo"><a href="">CodeNinja</a></div>
+      <label for="drop" class="toggle" style="text-align: center;">Menu</label>
+      <input type="checkbox" id="drop" />
+      <ul class="header__menu">
+        <li class="menu__li">
+          <label for="drop-1" class="toggle">Html & Css</label>
+          <a class="header__menu__link" href="">Html & Css</a>
+          <input type="checkbox" id="drop-1" />
+          <ul class="header__menu__lvl2">
+            <li class="menu__li--lvl2 liDisplay--none">
+              <a class="header__menu__link" href="">Html&Css</a>
+            </li>
+            <li class="menu__li--lvl2"><a class="header__menu__link" href="">How To Css</a></li>
+            <li class="menu__li--lvl2">
+              <label for="drop-3" class="toggle">Шаблоны</label>
+              <a class="header__menu__link--bgc" href="#">Шаблоны</a>
+              <input type="checkbox" id="drop-3" />
+              <ul class="header__menu__lvl3">
+                <li class="menu__li--lvl3"><a class="header__menu__link--hover" href="#">Две колонки</a></li>
+                <li class="menu__li--lvl3"><a class="header__menu__link--hover" href="#">Три колонки</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="menu__li"><a class="header__menu__link" href="#">Cервисы</a></li>
+        <li class="menu__li"><a class="header__menu__link" href="#">Soft</a></li>
+      </ul>
+    </nav>
+  </header>
+{% endhighlight %}
+{% highlight css %}
+#logo {
+display: block;
+padding: 0 30px;
+float: left;
+font-size: 20px;
+line-height: 60px; }
+#logo a {
+  text-decoration: none;
+  color: #000;
+}
+.toggle,
+[id^=drop] {
+  display: none; }
+.liDisplay--none {
+  display: none; }
+
+.header {
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  /* word-wrap: break-word; */
+  font-family: 'Open Sans', sans-serif;
+  line-height: 32px;
+  font-size: 22px; }
+  .header:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+    .header__menu {
+      float: right;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      position: relative;
+    }
+    .header__menu__lvl2 {
+      display: none;
+      position: absolute;
+      top: 60px;
+      padding: 0;
+      margin: 0;
+      list-style: none; }
+
+    .menu__li {
+      margin: 0;
+      display: inline-block;
+      float: left;
+      background-color: #fff; }
+      .menu__li:hover > ul {
+        display: inherit; }
+
+      .header__menu__link {
+        display: block;
+        padding: 14px 20px;
+        color: #000;
+        font-size: 17px;
+        text-decoration: none; }
+{% endhighlight %}

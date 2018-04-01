@@ -1,0 +1,48 @@
+---
+layout: post
+title: "Строки"
+date: 2018-03-19
+category: JavaScript
+description: "Примеры работы с строками"
+---
+<ul class="ankor">
+  <li><a class="link" href="#rzbsl">Разбив строки на слова</a></li>
+  <li><a class="link" href="#sind">Символ по индексу</a></li>
+</ul>
+<h3 id="rzbsl">Разбив строки на слова</h3>
+<p><b>split</b> - Разбивает строку на подстроки по указанному разделителю и возвращает массив подстрок.</p>
+{% highlight JavaScript %}
+var str = "Строка для тестирования примера";
+var substrs = str.split(" ");
+document.write(substrs.join("<br />"));
+{% endhighlight %}
+<h3 id="sind">Символ по индексу</h3>
+<p><b>charAt</b> - возвращает символ по указанной позиции.</p>
+{% highlight JavaScript %}
+var firstChar = str.charAt(0);
+var lastChar = str.charAt(str.length - 1);
+document.write("<br /> первый символ - " + firstChar + " последний символ - " + lastChar + "<br />");
+{% endhighlight %}
+<h3 id="sind">Поиск символа в строке</h3>
+{% highlight JavaScript %}
+// indexOf - возвращает индекс первого встречающегося в строке указанного символа.
+str = "ab-cd-ef-gh-ij";
+var firstDash = str.indexOf("-");
+document.write("Индекс первого символа '-' в строке " + str + "= " + firstDash + "</br>");
+
+// lastIndexOf - возвращает индекс последнего встречающегося в строке указанного символа.
+str = "ab-cd-ef-gh-ij";
+var lastDash = str.lastIndexOf("-");
+document.write("Индекс последнего символа '-' в строке " + str + "= " + lastDash + "</br>");
+{% endhighlight %}
+{% highlight JavaScript %}
+// substring -  возвращает строку между двумя указанными индексами, не включая индексы.
+str = "Hello, world!";
+substr = str.substring(6, 12);
+document.write(substr);
+
+// substr - возвращает строку начиная с указанного индекса, указанной длины.
+str = "Hello, world!";
+substr = str.substr(7, 5);
+document.write("<br />" + substr);
+{% endhighlight %}
