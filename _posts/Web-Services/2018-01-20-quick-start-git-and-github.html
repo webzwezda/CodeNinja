@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Git and github быстрый старт"
-date:   2018-01-20 
+date:   2018-01-20
 category: Web-Services
 description: "Краткое руководство по использованию контроля версий git and gihub"
 ---
@@ -12,6 +12,7 @@ description: "Краткое руководство по использован�
   <li><a class="link" href="#delSGA">Удаление из staging area</a></li>
   <li><a class="link" href="#push">Отправка на GitHub</a></li>
   <li><a class="link" href="#vetv">Ветки</a></li>
+  <li><a class="link" href="#ssh">ssh</a></li>
 </ul>
 <h3 id="podgotovka">Подготовка</h3>
 <p>Нам понадобится <a href="https://git-scm.com/downloads" class="link">Git download</a> и <a href="https://github.com/webzwezda" class="link">GitHub</a></p>
@@ -74,3 +75,27 @@ git branch -d [NAME] //удалить ветку
 git checkout -b gh-pages // -b создаст и перейдет
 {% endhighlight %}
 <p>Если был конфликт при слиянии нужно исправить и сделать коммит что будет подтвердит слияние</p>
+<h3 id="ssh">Shh</h3>
+<p>Создадим два разных ключа для.</p>
+{% highlight bash %}
+ssh-keygen -t rsa -f ~/.ssh/key1 -C "other-account@example.com"
+ssh-keygen -t rsa -f ~/.ssh/key2 -C "other-account@example.com"
+{% endhighlight %}
+<p>Создадим конфиг ~/.ssh/config</p>
+{% highlight bash %}
+host gh-acc1
+hostname github.com
+user git
+IdentityFile ~/.ssh/id_rsa
+IdentitiesOnly yes
+
+host gh-acc2
+hostname github.com
+user git
+IdentityFile ~/.ssh/key2
+IdentitiesOnly yes
+{% endhighlight %}
+<p>Присвоим нашему названию куда он будет пушить</p>
+{% highlight bash %}
+git remote add other git@gh-acc2:user/project.git
+{% endhighlight %}
