@@ -97,3 +97,20 @@ footer {
     clear: both;
   }
 }
+.video-wrap {
+  width: 75%;
+  margin: 1rem auto;
+  text-align: center;
+  position: relative;
+  padding-bottom: 56.25%; /* задаёт высоту контейнера для 16:9 (если 4:3 — поставьте 75%) */
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+.video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,24 @@
+---
+layout: post
+title:  "Монтирование NTFS диска в Ubuntu Linux"
+date:   2018-05-11
+category: Ubuntu
+description: "При использовании двух систем убунту и виндовс бывает нужно скидывать файлы на один носитель, расмотрим монтирование внешнего жеского диска с файловой системой NTFS к Linux дистрибутиву Ubuntu"
+---
+<p>И так перед нами имеется Linux дистрибутив <b>Ubunt 18.04 LTS</b> и внешний жесткий диск с файлвой системой <b>NTFS</b>.</p>
+<h3>Как узнать какой диск монтировать?</h3>
+<p>Команда для просмотра информации о всех подключенных дисках в Ubuntu</p>
+<p>Вводим команду без подключенного диска потом подключакм диск снова вводим команду и смотрем что изменилось. Так и узнаем какой диск нужно монтировать.</p>
+{% highlight bash %}
+sudo blkid
+{% endhighlight %}
+<img style="margin:15px 0" src="{{ "/image/other/komanda-otobrajenia-vsex-diskov-v-ubuntu.png" | prepend: site.baseurl | prepend: site.url }}" alt="">
+<p>Так я узнаю что монтировать нужно раздел /dev/sdb1 у которого файловая система <b>NTFS</b></p>
+<h2>Команда монтирования NTFS диска в Ubuntu</h2>
+<p>Эта команда доступна сразу после установки Ubuntu</p>
+{% highlight bash %}
+sudo ntfsfix /dev/sdb1
+{% endhighlight %}
+<div class="video-wrap">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vDF6EZdeAQ4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>
