@@ -1,7 +1,59 @@
 ---
 layout: page
-title:  "Ubuntu после установки"
-date:   2017-10-12 15:14:22 +1000
+title:  "Настройка Ubuntu 18.04 после установки"
+date:   2018-05-12 15:14:22 +1000
 category: Ubuntu
 permalink: /ubuntu/
 ---
+<h2>Шрифты от Microsoft</h2>
+<p>Не только шрифты но еще и кодеки.</p>
+{% highlight bash %}
+sudo apt install ubuntu-restricted-extras
+{% endhighlight %}
+<h2>Добавляем в контекстное меню опцию создания документов</h2>
+<p>Вводить последовательно по одной</p>
+{% highlight bash %}
+XDG_TEMPLATES_DIR=$(xdg-user-dir TEMPLATES)
+cd "$XDG_TEMPLATES_DIR"
+touch 'New Text File.txt' && touch 'New Word File.doc' && touch 'New Excel Spreadsheet.xls'
+{% endhighlight %}
+<h2>Решение проблемы с кириллицей в текстовом редакторе Gedit</h2>
+<p><span style="color:red">Внимание!</span>Это одна команда и должна быть прописанна в строчку</p>
+{% highlight bash %}
+gsettings set org.gnome.gedit.preferences.encodings candidate-encodings
+"['UTF-8', 'WINDOWS-1251', 'KOI8-R', 'CURRENT', 'ISO-8859-15', 'UTF-16']"
+{% endhighlight %}
+<h2>Установка дополнительной поддержки архиваторов</h2>
+{% highlight bash %}
+sudo apt install p7zip-rar rar unrar unace arj cabextract
+{% endhighlight %}
+<h2>Gnome Tweak Tool</h2>
+{% highlight bash %}
+sudo apt install gnome-tweak-tool
+{% endhighlight %}
+<h2>Московское время</h2>
+Установим отображение московского времени.
+{% highlight bash %}
+sudo apt install chrome-gnome-shell
+{% endhighlight %}
+<p>Установим браузерное расширение через Firefox <a class="link" href="https://extensions.gnome.org/extension/1060/timezone/">Ссылка</a></p>
+<p>В директории <b>home</b> создадим файл <b>people.json</b></p>
+<p>Поместим туда наш код.</p>
+<p>| <a href="https://www.youtube.com/redirect?q=https%3A%2F%2Fgithub.com%2Fjwendell%2Fgnome-shell-extension-timezone&event=video_description&v=wvwb4shRwVg&redir_token=qjkfWgJGsjwXFyMRkI-4aXDvDHd8MTUyNjE4NDYxNUAxNTI2MDk4MjE1" target="_blank" class="link">Примеры</a> | <a href="https://www.youtube.com/redirect?q=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FList_of_tz_database_time_zones&event=video_description&v=wvwb4shRwVg&redir_token=qjkfWgJGsjwXFyMRkI-4aXDvDHd8MTUyNjE4NDYxNUAxNTI2MDk4MjE1" target="_blank" class="link">Time Zone</a> | <a href="https://www.youtube.com/watch?v=wvwb4shRwVg" target="_blank" class="link">Видео инструкция</a> |</p>
+{% highlight json %}
+[
+  {
+    "name": "Moscow",
+    "avatar": "/home/syshka/Pictures/moscow.jpeg",
+    "city": "MSC",
+    "tz": "Europe/Moscow"
+  }
+]
+{% endhighlight %}
+<h2>Настройка OpenVPN</h2>
+{% highlight bash %}
+sudo apt install network-manager-openvpn
+{% endhighlight %}
+<p>Далее нам понадобится файл настройки <a href="http://www.vpngate.net/en/" target="_blank" class="link">Config</a></p>
+<p><a href="https://www.youtube.com/watch?v=EMVpszbxSYM&t=0s&list=PL-Gkj1oVrKUyWCkzWB6Aej98L2urezG2b&index=39" class="link">Видео</a></p>
+<img style="margin:15px 0; width: 45%" src="{{ "/image/other/openvpn.png" | prepend: site.baseurl | prepend: site.url }}" alt="Настройка OpenVpn в Ubuntu">

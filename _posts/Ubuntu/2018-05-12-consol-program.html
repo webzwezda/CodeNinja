@@ -1,0 +1,23 @@
+---
+layout: post
+title:  "Консольные программы для ubuntu"
+date:   2018-05-12
+category: Ubuntu
+description: "Краткий обзор лучших консольных программ для  ubuntu 18.04"
+---
+<h2>youtube-dl</h2>
+<p>Позволяет скачивать видео с большого количества сайтов, <a class="link" target="_blank" href="http://rg3.github.io/youtube-dl/supportedsites.html">список сайтов</a>  впечатляет.</p>
+{% highlight bash %}
+sudo apt-get install youtube-dl
+{% endhighlight %}
+<p>Покажет информацию какие фарматы есть, выбераем из таблицы нужный нам format code.</p>
+{% highlight bash %}
+youtube-dl -F https://youtu.be/moZ4qoFIeUE
+{% endhighlight %}
+<p><span style="color:red">Внимание!</span> ключ -f и -F это разные аргументы.</p>
+{% highlight bash %}
+youtube-dl -f formate-code https://youtu.be/moZ4qoFIeUE
+{% endhighlight %}
+<div class="video-wrap">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/moZ4qoFIeUE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div>

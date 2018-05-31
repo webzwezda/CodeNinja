@@ -1,0 +1,60 @@
+---
+layout: post
+title:  "Терминал Ubuntu"
+date:   2018-05-12
+category: Ubuntu
+description: "Руководство по работе с терминалом в ubuntu 18.04"
+---
+<p>Выполнение дальнейших команд от имени <abr class="abr" title="Супер пользователь">root</abr></p>
+{% highlight bash %}
+sudo -s
+sudo -i
+{% endhighlight %}
+<h2>Пути к файлам из терминала</h2>
+{% highlight bash %}
+dir / - Корневая директория
+dir ~/ - Домашняя директория
+pwd - Покажет полный путь где находимся
+{% endhighlight %}
+<h2>Создание файла в linux ubuntu</h2>
+{% highlight bash %}
+touch text.txt
+echo >>text.txt
+{% endhighlight %}
+<p>Добавим в этот файл какой либо текст</p>
+{% highlight bash %}
+echo >text.txt pidorov
+Способ 2
+echo -e "pidorov" >>text.txt
+ls -l >text.txt
+{% endhighlight %}
+<p>Вывод содержимого файла в терминал</p>
+{% highlight bash %}
+cat file.txt
+{% endhighlight %}
+<h2>Удаление папки с файлами в ubuntu</h2>
+{% highlight bash %}
+rm -rf dir_name
+{% endhighlight %}
+<h2>Поиск файлов через терминал ubuntu</h2>
+{% highlight bash %}
+find -name text*
+* - Указывает на любую последовательность символов
+{% endhighlight %}
+{% highlight bash %}
+apt moo
+or
+apt moo moo
+or
+apt moo moo moo
+{% endhighlight %}
+<h2>Имя машины</h2>
+<p>Команда покажет имя машины из под которой работаем</p>
+{% highlight bash %}
+uname -a
+{% endhighlight %}
+<h2>Права на файл</h2>
+{% highlight bash %}
+sudo chmod -R 777 * - Все папки в папке
+sudo chown root:root text.txt
+{% endhighlight %}
