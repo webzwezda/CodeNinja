@@ -5,43 +5,34 @@
 {% include header.html %}
 <div class="wrap">
 
-<div class="menu__left--wrap">
-  {% if page.category  %}
+	<div class="menu__left--wrap">
 
-  <h2 class="menu__left__title">{{page.category}}</h2>
-  {% elsif page.categories %}
-  {% for cat in page.categories limit: 1 %}<h2 class="menu__left__title">{{cat}}</h2>{% endfor%}
+		{% if page.category %}
+			{% assign cat = page.category %}
+			<h2 class="menu__left__title">{{cat}}</h2>
+			{% elsif page.categories %}
+			{% assign cat = page.categories %}
+			<h2 class="menu__left__title">{{cat}}</h2>
     {% else %}
     <h2 class="menu__left__title">Реклама</h2>
   {% endif %}
 
-    {% if page.category %}
-    {% assign pagecat = page.category %}
-      {% else %}
-      {% for cat in page.categories limit: 1 %}{% assign pagecat = {{cat}} %}</h2>{% endfor%}
-    {% endif %}
 
-<nav class="left__nav">
-  <ul>
-{% for post in site.categories.[pagecat] %}
+		<nav class="left__nav">
+  		<ul>
+				{% for post in site.categories[cat] %}
+					{% if post.url != page.url %}
+						<li>
+  						<a href="{{post.url | prepend: site.baseurl | prepend: site.url }}" class="left__nav__link">{{post.title}}</a>
+						</li>
 
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</nav>
 
+	</div>
 
-{% if post.url != page.url %}
-<li>
-  <a href="{{post.url | prepend: site.baseurl | prepend: site.url }}" class="left__nav__link">{{post.title}}</a>
-</li>
-
-{% endif %}
-
-{% endfor %}
-</ul>
-</nav>
-
-
-
-
-</div>
   <div class="content">
     <div class="main">
   {{ content }}
