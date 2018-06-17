@@ -1,0 +1,115 @@
+---
+layout: post
+title:  "Gulp"
+date:   2018-06-13
+category: Js-Framework
+permalink: /gulp/
+---
+
+{% highlight bash %} 
+npm init -инициализируем package.json
+npm i gulp --save-dev сохраняет версию
+npm install gulpjs/gulp.git#4.0 --save-dev // пропатчит до v4+
+{% endhighlight %}
+
+<p>Создадим gulpfile.js и выведим это в bash <b>gulp mytask</b></p>
+
+{% highlight javascript %}
+var gulp = require("gulp");
+
+gulp.task("mytask", function(){
+	console.log("sss");
+});
+
+gulp.task("mytask", function(){
+	return gulp.src("source-file") // src - откуда берем
+	return gulp.src(["!source-file" , "source/app/**/*.scss"]) // Все файлы кроме !source-file
+	return gulp.src("source-file/*.+(scss|sass))") // и scss и sass
+	.pipe(plugin())
+	.pipe(gulp.dest("folder")) // .dest - куда кладем
+});
+{% endhighlight %}
+<h3 id="watch">Слежка за файлами</h3>
+<p>Будет следить за файлами и вслучае чаго выполнит таск sass</p>
+{% highlight javascript %}
+gulp.task("watch", function(){
+	gulp.watch("app/sass/*.scss", ["sass"]);
+});
+{% endhighlight %}
+<h3 id="sass">Установка пакетов sass</h3>
+{% highlight javascript %}
+npm i gulp-sass --save-dev
+
+gulp.task("sass", function() {
+	return gulp.src("app/sass/main.scss")
+		.pipe(sass())
+		.pipe(gulp.dest("app/css"))
+});
+//bash - gulp watch
+gulp.task("watch", function() {
+gulp.watch("app/sass/main.scss", ["sass"])
+});
+{% endhighlight %}
+
+<h3>Browser sync</h3>
+
+{% highlight bash %}
+npm install browser-sync gulp --save-dev
+{% endhighlight %}
+<h3>Bower</h3>
+<p>Сборщик js библиотек</p>
+<p>Создадим файл <b>.bowerrc</b> и укажем куда он будет подтягивать все библеотеки для последующей минификации</p>
+{% highlight json %}
+{
+	"directory": "app/libs"
+}
+{% endhighlight %}
+<p>Это подтянет библеотеки в app/libs</p>
+{% highlight bash %}
+bower i  jquery magnific-popup
+{% endhighlight %}
+<h4>Сжималка</h4>
+{% highlight bash %}
+npm i --save-dev gulp-concat gulp-uglifyjs
+{% endhighlight %}
+{% highlight javascript %}
+var gulp      = require('gulp'), // Подключаем Gulp
+    sass        = require('gulp-sass'), //Подключаем Sass пакет,
+    browserSync = require('browser-sync'), // Подключаем Browser Sync
+    concat      = require('gulp-concat'), // Подключаем gulp-concat (для конкатенации файлов)
+    uglify      = require('gulp-uglifyjs'); // Подключаем gulp-uglifyjs (для сжатия JS)
+
+gulp.task('scripts', function() {
+	return gulp.src([ // Берем все необходимые библиотеки
+			'app/libs/jquery/dist/jquery.min.js', // Берем jQuery
+			'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js' // Берем Magnific Popup
+			])
+			.pipe(concat('libs.min.js')) // Собираем их в кучу в новом файле libs.min.js
+			.pipe(uglify()) // Сжимаем JS файл
+			.pipe(gulp.dest('app/js')); // Выгружаем в папку app/js
+});
+{% endhighlight %}
+<h3>Работа с Css</h3>
+{% highlight bash %}
+npm i gulp-cssnano gulp-rename --save-dev
+{% endhighlight %}
+{% highlight javascript %}
+cssnano     = require('gulp-cssnano'), // Подключаем пакет для минификации CSS
+    rename      = require('gulp-rename'); // Подключаем библиотеку для переименования файлов
+{% endhighlight %}
+<h3>Отчистка дериктории</h3>
+{% highlight bash %}
+npm i del --save-dev
+{% endhighlight %}
+{% highlight javascript %}
+gulp.task("clean", function(){
+	return del.sync("dist");
+});
+{% endhighlight %}
+
+<h2>Полезные</h2>
+<p>Проверка синтаксиса на соответствие стандартам</p>
+{% highlight bash %}
+npm install --save-dev gulp-jscs
+{% endhighlight %}
+

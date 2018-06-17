@@ -1,0 +1,13 @@
+- id: "Javascript"
+  dir: "/collection/xiaomi/"
+  toggle: true
+    
+  lvl1:
+    - id: "How to Js"
+      dir: "/how-to-js/"
+
+  lvl2:
+    - id: "Javascript"
+      dir: "/collection/xiaomi/"
+      toggle: true
+      

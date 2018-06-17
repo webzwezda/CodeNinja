@@ -21,6 +21,9 @@ img {
   max-width: 100%;
 }
 
+.post__content--wrap{
+	min-height: 55vh;
+}
 
 html {
   font-size: 18px;
@@ -42,7 +45,9 @@ header {
 
 
 .main {
-  margin: 0 4%;
+	margin: 0 4%;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
 }
 .ankor {
   text-align: right;

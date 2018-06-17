@@ -1,1 +1,12 @@
 jekyll s --livereload --config _dev.yml
+{% assign data = site.data.data %}
+{% assign counter = 0 %}
+					{% for menu in data %}
+						{% if menu.toggle == true %}
+							 <label for="drop-6" class="toggle">JavaScript {% include down.svg %}
+  					</label>
+            <a class="header__menu__link" href="{{ "/javascript/"  | prepend: site.baseurl | prepend: site.url}}">JavaScript {% include down.svg %}
+  </a>
+            <input type="checkbox" id="drop-6"/>
+						{% endif %}
+					{%endfor %}

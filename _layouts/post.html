@@ -2,9 +2,9 @@
 layout: default
 ---
 <h1 class="page__title">{{page.title}}</h1>
-
+<div class="post__content--wrap">
     {{ content }}
-
+</div>
   <div class="paginatePost--category">
     {% if page.categories %}
       {% assign category = page.categories[0] %}
