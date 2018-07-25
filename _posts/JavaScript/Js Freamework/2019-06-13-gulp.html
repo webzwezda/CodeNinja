@@ -6,7 +6,7 @@ category: Js-Framework
 permalink: /gulp/
 ---
 
-{% highlight bash %} 
+{% highlight bash %}
 npm init -инициализируем package.json
 npm i gulp --save-dev сохраняет версию
 npm install gulpjs/gulp.git#4.0 --save-dev // пропатчит до v4+
@@ -57,7 +57,10 @@ gulp.watch("app/sass/main.scss", ["sass"])
 npm install browser-sync gulp --save-dev
 {% endhighlight %}
 <h3>Bower</h3>
-<p>Сборщик js библиотек</p>
+<p>Установщик js библиотек</p>
+{% highlight bash %}
+npm i -g bower
+{% endhighlight %}
 <p>Создадим файл <b>.bowerrc</b> и укажем куда он будет подтягивать все библеотеки для последующей минификации</p>
 {% highlight json %}
 {
@@ -95,7 +98,14 @@ npm i gulp-cssnano gulp-rename --save-dev
 {% endhighlight %}
 {% highlight javascript %}
 cssnano     = require('gulp-cssnano'), // Подключаем пакет для минификации CSS
-    rename      = require('gulp-rename'); // Подключаем библиотеку для переименования файлов
+rename      = require('gulp-rename'); // Подключаем библиотеку для переименования файлов
+
+gulp.task('css-libs', ['sass'], function() {
+    return gulp.src('app/libs/*.scss')
+        .pipe(cssnano())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest('app/css'));
+});
 {% endhighlight %}
 <h3>Отчистка дериктории</h3>
 {% highlight bash %}
@@ -112,4 +122,3 @@ gulp.task("clean", function(){
 {% highlight bash %}
 npm install --save-dev gulp-jscs
 {% endhighlight %}
-
